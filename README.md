@@ -11,7 +11,24 @@ An eco shop & ecommerce responsive React template built by React.JS & Tailwind C
 ![Readme_Banner5](./client/public/assets/readme/readme_benner5.png)
 ![Readme_Banner6](./client/public/assets/readme/readme_benner6.png)
 
-## Related
+## Technologies
+
+| Client                | Server                    |
+| --------------------- | ------------------------- |
+| React.JS              | Bcrypt.JS                 |
+| Headless UI           | Cloudinary.JS             |
+| React Redux           | Colors.JS                 |
+| Redux Toolkit         | Cors Policy               |
+| Tailwind CSS          | Dotenv                    |
+| Tailwind Forms        | Express.JS                |
+| Tailwind Line Clamp   | JWT                       |
+| Tailwind Typography   | Mongoose.JS               |
+| Tailwind Aspect Ratio | Multer.JS                 |
+| React.JS              | Multer Storage Cloudinary |
+| React Router Dom      | Nodemailer                |
+| ❌                    | Validator.JS              |
+
+## Important Links
 
 - Client Side Live Link: [Click Here]()
 
