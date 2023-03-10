@@ -32,13 +32,12 @@ app.use(express.json());
 /* connection establishment */
 app.get("/", (req, res) => {
   try {
-    console.log(req);
+    console.log(`URL: ${req.url} || Method: ${req.method}`);
 
-    res.status(204).json({
+    res.status(200).json({
       acknowledgement: true,
-      title: "No Content",
-      message:
-        "The request has been successfully processed, but is not returning any content",
+      title: "OK",
+      message: "The request is OK and fetch successful request",
       description: "Ciseco E-Commerce server connection establish successfully",
     });
   } catch (error) {
