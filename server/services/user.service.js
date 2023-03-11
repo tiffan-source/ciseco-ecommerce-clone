@@ -7,6 +7,7 @@
 
 /* internal import */
 const User = require("../models/user.model");
+const remove = require("../utils/remove.util");
 const token = require("../utils/token.util");
 
 /* find by email */
@@ -122,6 +123,8 @@ exports.updateUser = async (id, data) => {
 
 // remove specific user
 exports.removeUser = async (id) => {
-  /* remove user credentials permanently */
-  return await User.findByIdAndDelete(id);
+  const result = await User.findByIdAndDelete(id);
+  await remove(result.avatar.public_id);
+
+  return result;
 };
