@@ -25,8 +25,7 @@ An eco shop & ecommerce responsive React template built by React.JS & Tailwind C
 | Tailwind Typography   | Mongoose.JS               |
 | Tailwind Aspect Ratio | Multer.JS                 |
 | React.JS              | Multer Storage Cloudinary |
-| React Router Dom      | Nodemailer                |
-| ❌                    | Validator.JS              |
+| React Router Dom      | Validator.JS              |
 
 ## Important Links
 
@@ -37,6 +36,8 @@ An eco shop & ecommerce responsive React template built by React.JS & Tailwind C
 - Dashboard Reference Link: [Click Here](https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/index.html)
 
 - Reference Site Live Link: [Click Here](https://chisnghiax.com/ciseco/)
+
+- API Reference `Postman` Link: [Click Here](https://api.postman.com/collections/24099405-e6bf9cce-a731-43ed-9059-a80236dc876a?access_key=PMAT-01GV82439T78SH5D4HY22WXHZ3)
 
 # Make it own
 
