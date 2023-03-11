@@ -17,7 +17,7 @@ exports.signUp = async (req, res, next) => {
       acknowledgement: true,
       message: "Created",
       description:
-        "The request has been fulfilled, and a new resource is created",
+        "Successfully register new user credentials",
       data: result,
     });
   } catch (error) {
@@ -53,7 +53,7 @@ exports.persistLogin = async (req, res, next) => {
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "The request is OK and fetch user for persistency",
+      description: "Successfully fetch user credentials for persistency",
       data: result,
     });
   } catch (error) {
@@ -69,7 +69,7 @@ exports.displayUsers = async (req, res, next) => {
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "The request is OK and fetch users to display",
+      description: "Successfully fetch all user's credentials",
       count: result.count,
       data: result.users,
     });
@@ -86,7 +86,7 @@ exports.displayUser = async (req, res, next) => {
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "The request is OK and fetch user to display",
+      description: "Successfully fetch the user's credentials",
       data: result,
     });
   } catch (error) {
@@ -103,7 +103,7 @@ exports.updateUser = async (req, res, next) => {
       acknowledgement: true,
       message: "Accepted",
       description:
-        "The request has been accepted for processing, but the processing has not been completed",
+        "Successfully updated user's credentials",
       data: result,
     });
   } catch (error) {
@@ -120,7 +120,7 @@ exports.removeUser = async (req, res, next) => {
       acknowledgement: true,
       message: "Accepted",
       description:
-        "The request has been accepted for processing, but the processing has not been completed",
+        "Successfully remove user's credentials",
       data: result,
     });
   } catch (error) {
