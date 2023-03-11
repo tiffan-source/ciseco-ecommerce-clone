@@ -18,7 +18,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please, provide your full name"],
       trim: true,
-      minLength: [3, "Your name must be at least 3 characters"],
       maxLength: [100, "Your name would be at most 100 characters"],
     },
 
@@ -73,6 +72,15 @@ const userSchema = new mongoose.Schema(
       },
     },
 
+    // for user gender
+    gender: {
+      type: String,
+      enum: {
+        values: ["male", "female", "binary"],
+        message: "Gender would be male/female/binary",
+      },
+    },
+
     // for user contact number
     phone: {
       type: String,
@@ -102,9 +110,19 @@ const userSchema = new mongoose.Schema(
       default: "active",
     },
 
-    // for address and date of birth
-    address: String,
-    dob: Date,
+    // for user address
+    address: {
+      type: String,
+      required: false,
+      trim: true,
+      maxLength: [500, "Your address would be at most 500 characters"],
+    },
+
+    // for user date of birth
+    dob: {
+      type: Date,
+      required: false,
+    },
 
     // for carting orders
     cart: [
