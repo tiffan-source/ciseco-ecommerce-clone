@@ -8,10 +8,13 @@
 /* external imports */
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
 
-/* internal imports */
+/* internal import */
+const error = require("./middlewares/error.middleware");
 
 /* router level imports */
+const userRoute = require("./routes/user.route");
 
 /* application level connection */
 const app = express();
@@ -28,27 +31,24 @@ app.use(
 app.use(express.json());
 
 /* router level connections */
+app.use("/api/user", userRoute);
+
+/* global error handler */
+app.use(error);
 
 /* connection establishment */
-app.get("/", (req, res) => {
+app.get("/", (req, res, next) => {
   try {
-    console.log(`URL: ${req.url} || Method: ${req.method}`);
-
     res.status(200).json({
       acknowledgement: true,
-      title: "OK",
-      message: "The request is OK and fetch successful request",
-      description: "Ciseco E-Commerce server connection establish successfully",
+      message: "OK",
+      description: "The request is OK and fetch successful request",
+      data: "Ciseco E-Commerce server connection establish successfully",
     });
-  } catch (error) {
-    console.log(error);
-
-    res.status(500).json({
-      acknowledgement: false,
-      title: "Internal Server Error",
-      message: error.name,
-      description: error.message,
-    });
+  } catch (err) {
+    next(err);
+  } finally {
+    console.log(`URL: ${req.url} || Method: ${req.method}`);
   }
 });
 
