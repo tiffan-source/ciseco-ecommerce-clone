@@ -16,7 +16,7 @@ const uploadPhoto = async (req, res, next) => {
     res.status(201).json({
       acknowledgement: true,
       message: "Created",
-      description: "Insertion successful",
+      description: "Photo uploaded successfully",
       data: result,
     });
   } catch (error) {
@@ -34,7 +34,7 @@ const updatePhoto = async (req, res, next) => {
     res.status(202).json({
       acknowledgement: true,
       message: "Accepted",
-      description: "Uprating successful",
+      description: "Photo updated successfully",
       data: result,
     });
   } catch (error) {
