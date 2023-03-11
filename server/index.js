@@ -5,9 +5,8 @@
  * Date: 10/03/2023
  */
 
-/* external imports */
+/* external import */
 const mongoose = require("mongoose");
-require("dotenv").config();
 
 /* internal imports */
 const app = require("./app");
@@ -17,7 +16,7 @@ const consoleMessage = require("./utils/console.util");
 mongoose.set("strictQuery", false);
 mongoose
   .connect(process.env.ATLAS_URI, {
-    dbName: "ciseco-ecommerce",
+    dbName: process.env.DB_NAME,
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
