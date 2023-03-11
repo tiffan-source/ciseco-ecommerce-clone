@@ -4,6 +4,7 @@
     "email": "hasib143sl@gmail.com",
     "password": "Hasib@123",
     "confirmPassword": "Hasib@123",
+    "gender": "male",
     "phone": "+8801906315901"
   },
   {
@@ -11,6 +12,7 @@
     "email": "khanumsadia22@gmail.com",
     "password": "Sadia@123",
     "confirmPassword": "Sadia@123",
+    "gender": "female",
     "phone": "+8801309954147"
   },
   {
@@ -18,6 +20,7 @@
     "email": "sadiakhanum01@gmail.com",
     "password": "Sadia@123",
     "confirmPassword": "Sadia@123",
+    "gender": "female",
     "phone": "+8801309954147"
   },
   {
@@ -25,6 +28,7 @@
     "email": "akternipa941@gmail.com",
     "password": "Nipa@123",
     "confirmPassword": "Nipa@123",
+    "gender": "female",
     "phone": "+8801700594282"
   },
   {
@@ -32,6 +36,7 @@
     "email": "jenifasanzoo@gmail.com",
     "password": "Sanjida@123",
     "confirmPassword": "Sanjida@123",
+    "gender": "female",
     "phone": "+8801740383105"
   },
   {
@@ -39,6 +44,7 @@
     "email": "rayhankhan52cu@gmail.com",
     "password": "Rayhan@123",
     "confirmPassword": "Rayhan@123",
+    "gender": "male",
     "phone": "+8801313861596"
   },
   {
@@ -46,6 +52,7 @@
     "email": "rkrakibhasan680@gmail.com",
     "password": "Rakib@123",
     "confirmPassword": "Rakib@123",
+    "gender": "male",
     "phone": "+8801913547448"
   }
 ]
