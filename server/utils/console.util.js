@@ -15,9 +15,9 @@ colors.setTheme({
 });
 
 exports.successMessage = (message) => {
-  console.log(`Success: ${message}`.success);
+  console.log(`[Success] - ${message}`.success);
 };
 
 exports.errorMessage = (message) => {
-  console.log(`Error: ${message}`.error.bold.italic);
+  console.log(`[Error] - ${message}`.error.bold.italic);
 };
