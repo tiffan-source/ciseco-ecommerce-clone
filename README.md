@@ -11,6 +11,14 @@ An eco shop & ecommerce responsive React template built by React.JS & Tailwind C
 ![Readme_Banner5](./client/public/assets/readme/readme_benner5.png)
 ![Readme_Banner6](./client/public/assets/readme/readme_benner6.png)
 
+## ER Diagram
+
+![ER_Diagram](./client/public/assets/sdlc/er_diagram.jpg)
+
+## Gantt Chart
+
+![Gantt_Chart](./client/public/assets/sdlc/gantt_chart.png)
+
 ## Technologies
 
 | Client                | Server                    |
