@@ -29,15 +29,11 @@ An eco shop & ecommerce responsive React template built by React.JS & Tailwind C
 
 ## Important Links
 
-- Client Side Live Link: [Click Here]()
-
-- Server Side Live Link: [Click Here]()
-
-- Dashboard Reference Link: [Click Here](https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/index.html)
-
-- Reference Site Live Link: [Click Here](https://chisnghiax.com/ciseco/)
-
-- API Reference `Postman` Link: [Click Here](https://api.postman.com/collections/24099405-e6bf9cce-a731-43ed-9059-a80236dc876a?access_key=PMAT-01GV82439T78SH5D4HY22WXHZ3)
+- [x] Client Side Live Link: [Click Here]()
+- [x] Server Side Live Link: [Click Here]()
+- [x] Dashboard Reference Link: [Click Here](https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/index.html)
+- [x] Reference Site Live Link: [Click Here](https://chisnghiax.com/ciseco/)
+- [x] API Reference `Postman` Link: [Click Here](https://api.postman.com/collections/24099405-e6bf9cce-a731-43ed-9059-a80236dc876a?access_key=PMAT-01GV82439T78SH5D4HY22WXHZ3)
 
 # Make it own
 
