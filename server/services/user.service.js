@@ -104,21 +104,24 @@ exports.displayUser = async ({ id }) => {
  * permanently disable user credentials
  */
 exports.updateUser = async (id, data) => {
-  // { status: "inactive" } passing instead of data
+  if (Object.keys(data).includes("cart")) {
+    return await User.findByIdAndUpdate(
+      id,
+      {
+        $push: data,
+      }, // receive data as: {"cart": "AN_OBJECT_ID"}
+      {
+        runValidators: true,
+        returnOriginal: false,
+      }
+    );
+  }
+
+  // { status: "inactive" } for permanent disable account
   return await User.findByIdAndUpdate(id, data, {
     runValidators: true,
     returnOriginal: false,
   });
-
-  /* permanently disable user credentials */
-  //   return await User.findByIdAndUpdate(
-  //     id,
-  //     { status: "inactive" },
-  //     {
-  //       runValidators: true,
-  //       returnOriginal: false,
-  //     }
-  //   );
 };
 
 // remove specific user
