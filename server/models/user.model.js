@@ -127,9 +127,18 @@ const userSchema = new mongoose.Schema(
     // for carting orders
     cart: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Product",
-        quantity: 0,
+        product: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Product",
+        },
+        quantity: {
+          type: Number,
+          min: [1, "Quantity won't be less than 1"],
+        },
+        cartedAt: {
+          type: Date,
+          default: Date.now,
+        },
       },
     ],
 
