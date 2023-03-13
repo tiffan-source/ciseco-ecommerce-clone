@@ -1,6 +1,6 @@
 /**
  * Title: Create category schema
- * Description: Schema that consume category and sub-category based credentials
+ * Description: Schema that consume category based credentials
  * Author: Hasibul Islam
  * Date: 11/03/2023
  */
@@ -45,7 +45,7 @@ const categorySchema = new mongoose.Schema(
 
     // for tags
     tags: {
-      type: [{ type: String, uppercase: true, trim: true }],
+      type: [{ type: String, trim: true }],
       validate: {
         validator: function (value) {
           return value.length <= 5;
@@ -53,6 +53,14 @@ const categorySchema = new mongoose.Schema(
         message: "Won't able to add more than 5 tags",
       },
     },
+
+    // for sub-categories
+    subcategories: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Subcategory",
+      },
+    ],
 
     // for category  time stamps
     createdAt: {
@@ -67,6 +75,24 @@ const categorySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+/* middleware for category */
+categorySchema.pre("save", function (next) {
+  // Capitalize title
+  let splitStr = this.title.toLowerCase().split(" ");
+  for (let i = 0; i < splitStr.length; i++) {
+    splitStr[i] =
+      splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+  }
+  this.title = splitStr.join(" ");
+
+  // replace space with hyphen and lowercase
+  const newTags = [];
+  this.tags.forEach((tag) => newTags.push(tag.replace(" ", "-").toLowerCase()));
+  this.tags = newTags;
+
+  next();
+});
+
 /* create category model schema */
 const Category = mongoose.model("Category", categorySchema);
 
@@ -76,4 +102,6 @@ module.exports = Category;
 /**
  * Array limit in mongoose schema validation
  * https://stackoverflow.com/questions/28514790/how-to-set-limit-for-array-size-in-mongoose-schema
+ * How can i capitalize strings in mongoose?
+ * https://stackoverflow.com/questions/28116533/how-can-i-capitalize-strings-in-mongoose
  */
