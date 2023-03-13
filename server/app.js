@@ -17,6 +17,7 @@ const error = require("./middlewares/error.middleware");
 const userRoute = require("./routes/user.route");
 const categoryRoute = require("./routes/category.route");
 const subcategoryRoute = require("./routes/subcategory.route");
+const productRoute = require("./routes/product.route");
 
 /* application level connection */
 const app = express();
@@ -36,6 +37,7 @@ app.use(express.json());
 app.use("/api/user", userRoute);
 app.use("/api/category", categoryRoute);
 app.use("/api/subcategory", subcategoryRoute);
+app.use("/api/product", productRoute);
 
 /* global error handler */
 app.use(error);
