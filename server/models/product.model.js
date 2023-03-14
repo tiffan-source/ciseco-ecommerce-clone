@@ -79,7 +79,7 @@ const productSchema = new mongoose.Schema(
     // for subcategory
     subcategory: {
       type: ObjectId,
-      ref: "Category",
+      ref: "Subcategory",
     },
 
     // for brand
