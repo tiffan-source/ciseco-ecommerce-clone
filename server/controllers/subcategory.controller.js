@@ -17,7 +17,8 @@ exports.createSubcategory = async (req, res, next) => {
       acknowledgement: true,
       message: "Created",
       description: "Successfully created new subcategory credentials",
-      data: result,
+      count: result.count,
+      data: result.subcategories,
     });
   } catch (error) {
     next(error);
@@ -33,7 +34,7 @@ exports.displaySubcategories = async (req, res, next) => {
       acknowledgement: true,
       message: "OK",
       count: result.length,
-      description: "Successfully fetch all subcategory's credentials",
+      description: "Successfully fetch all subcategory credentials",
       count: result.count,
       data: result.categories,
     });
