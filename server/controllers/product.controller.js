@@ -65,9 +65,9 @@ exports.displayProducts = async (req, res, next) => {
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      count: result.length,
-      description: "Successfully fetch all product's credentials",
-      data: result,
+      description: "Successfully fetch all product credentials",
+      count: result.count,
+      data: result.products,
     });
   } catch (error) {
     next(error);
@@ -82,7 +82,7 @@ exports.displayProduct = async (req, res, next) => {
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "Successfully fetch specific product's credentials",
+      description: "Successfully fetch specific product credentials",
       data: result,
     });
   } catch (error) {
@@ -98,7 +98,7 @@ exports.updateProduct = async (req, res, next) => {
     res.status(202).json({
       acknowledgement: true,
       message: "Accepted",
-      description: "Successfully update specific product's credentials",
+      description: "Successfully update specific product credentials",
       data: result,
     });
   } catch (error) {
@@ -114,7 +114,7 @@ exports.removeProduct = async (req, res, next) => {
     res.status(202).json({
       acknowledgement: true,
       message: "Accepted",
-      description: "Successfully remove specific product's credentials",
+      description: "Successfully remove specific product credentials",
       data: result,
     });
   } catch (error) {
