@@ -34,12 +34,11 @@ const categorySchema = new mongoose.Schema(
       url: {
         type: String,
         validate: [validator.isURL, "Please provide a valid thumbnail URL"],
-        default:
-          "https://images.unsplash.com/photo-1472141521881-95d0e87e2e39?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80",
+        default: "",
       },
       public_id: {
         type: String,
-        default: "unsplash/photo-1472141521881-95d0e87e2e39",
+        default: "",
       },
     },
 
