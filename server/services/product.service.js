@@ -6,6 +6,7 @@
  */
 
 /* internal import */
+const Brand = require("../models/brand.model");
 const Product = require("../models/product.model");
 const Subcategory = require("../models/subcategory.model");
 const User = require("../models/user.model");
@@ -28,15 +29,21 @@ exports.createProduct = async (data) => {
   await Subcategory.findByIdAndUpdate(result.subcategory, {
     $push: { products: result._id },
   });
+  await Brand.findByIdAndUpdate(result.brand, {
+    $push: { products: result._id },
+  });
   return result;
 };
 
 /* display all products */
 exports.displayProducts = async ({ page, limit }) => {
-  return await Product.find({})
+  const result = await Product.find({})
     .skip((Number(page) - 1) * limit)
     .limit(limit)
     .sort("-updatedAt");
+
+  const count = await Product.estimatedDocumentCount();
+  return { products: result, count };
 };
 
 /* display specific product */
@@ -74,6 +81,16 @@ exports.removeProduct = async ({ id }) => {
         $pull: { cart: { product: result._id } },
       })
   );
+
+  // remove from subcategory
+  await Subcategory.findByIdAndUpdate(result.subcategory, {
+    $pull: { products: result._id },
+  });
+
+  // remove from brand
+  await Brand.findByIdAndUpdate(result.brand, {
+    $pull: { products: result._id },
+  });
 
   return result;
 };
