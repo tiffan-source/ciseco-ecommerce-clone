@@ -7,6 +7,7 @@
 
 /* internal import */
 const Category = require("../models/category.model");
+const Product = require("../models/product.model");
 const Subcategory = require("../models/subcategory.model");
 const remove = require("../utils/remove.util");
 
@@ -28,7 +29,7 @@ exports.displaySubcategories = async ({ page, limit }) => {
     .sort("-updatedAt");
 
   const count = await Subcategory.estimatedDocumentCount();
-  return { categories: result, count };
+  return { subcategories: result, count };
 };
 
 /* display specific category */
@@ -52,6 +53,13 @@ exports.updateSubcategory = async (id, data) => {
 exports.removeSubcategory = async ({ id }) => {
   const result = await Subcategory.findByIdAndDelete(id);
   await remove(result.thumbnail.public_id);
+
+  // remove from product
+  result.products.forEach(async (product) => {
+    await Product.findByIdAndUpdate(product, {
+      $unset: { subcategory: result._id },
+    });
+  });
 
   return result;
 };
