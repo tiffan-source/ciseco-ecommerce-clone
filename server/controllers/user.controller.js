@@ -69,7 +69,7 @@ exports.displayUsers = async (req, res, next) => {
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "Successfully fetch all user's credentials",
+      description: "Successfully fetch all user credentials",
       count: result.count,
       data: result.users,
     });
@@ -86,7 +86,7 @@ exports.displayUser = async (req, res, next) => {
     res.status(200).json({
       acknowledgement: true,
       message: "OK",
-      description: "Successfully fetch the user's credentials",
+      description: "Successfully fetch the user credentials",
       data: result,
     });
   } catch (error) {
@@ -103,7 +103,7 @@ exports.updateUser = async (req, res, next) => {
       acknowledgement: true,
       message: "Accepted",
       description:
-        "Successfully updated user's credentials",
+        "Successfully updated user credentials",
       data: result,
     });
   } catch (error) {
@@ -120,7 +120,7 @@ exports.removeUser = async (req, res, next) => {
       acknowledgement: true,
       message: "Accepted",
       description:
-        "Successfully remove user's credentials",
+        "Successfully remove user credentials",
       data: result,
     });
   } catch (error) {
