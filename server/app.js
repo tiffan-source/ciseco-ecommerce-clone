@@ -18,6 +18,7 @@ const userRoute = require("./routes/user.route");
 const categoryRoute = require("./routes/category.route");
 const subcategoryRoute = require("./routes/subcategory.route");
 const productRoute = require("./routes/product.route");
+const brandRoute = require("./routes/brand.route");
 
 /* application level connection */
 const app = express();
@@ -38,6 +39,7 @@ app.use("/api/user", userRoute);
 app.use("/api/category", categoryRoute);
 app.use("/api/subcategory", subcategoryRoute);
 app.use("/api/product", productRoute);
+app.use("/api/brand", brandRoute);
 
 /* global error handler */
 app.use(error);
