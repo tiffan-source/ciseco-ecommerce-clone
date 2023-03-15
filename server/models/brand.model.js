@@ -99,7 +99,7 @@ const brandSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-/* middleware for category */
+/* middleware for brand */
 brandSchema.pre("save", function (next) {
   // Capitalize tagline
   let splitStr = this.tagline.toLowerCase().split(" ");
