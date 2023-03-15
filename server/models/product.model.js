@@ -118,7 +118,7 @@ const productSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-/* middleware for subcategory */
+/* middleware for product */
 productSchema.pre("save", function (next) {
   // capitalize title
   let splitStr = this.title.toLowerCase().split(" ");
