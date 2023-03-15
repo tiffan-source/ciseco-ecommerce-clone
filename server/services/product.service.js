@@ -53,11 +53,10 @@ exports.displayProduct = async ({ id }) => {
 
 /* update specific product */
 exports.updateProduct = async (id, data) => {
-  return await Product.findByIdAndUpdate(
-    id,
-    { $set: data },
-    { returnOriginal: false, runValidators: true }
-  );
+  return await Product.findByIdAndUpdate(id, data, {
+    returnOriginal: false,
+    runValidators: true,
+  });
 };
 
 /* remove specific product */
@@ -72,10 +71,10 @@ exports.removeProduct = async ({ id }) => {
   }
 
   // remove from user cart
-  const product = await User.find({
+  const users = await User.find({
     cart: { $elemMatch: { product: result._id } },
   });
-  product.forEach(
+  users.forEach(
     async (user) =>
       await User.findByIdAndUpdate(user._id, {
         $pull: { cart: { product: result._id } },
