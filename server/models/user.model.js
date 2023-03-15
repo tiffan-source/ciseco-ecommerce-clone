@@ -9,6 +9,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const validator = require("validator");
+const { ObjectId } = mongoose.Schema.Types;
 
 /* create user schema */
 const userSchema = new mongoose.Schema(
@@ -127,7 +128,7 @@ const userSchema = new mongoose.Schema(
     cart: [
       {
         product: {
-          type: mongoose.Schema.Types.ObjectId,
+          type: ObjectId,
           ref: "Product",
         },
         quantity: {
@@ -140,6 +141,12 @@ const userSchema = new mongoose.Schema(
         },
       },
     ],
+
+    // for store creation
+    store: {
+      type: ObjectId,
+      ref: "Store",
+    },
 
     // for user account time stamps
     createdAt: {
