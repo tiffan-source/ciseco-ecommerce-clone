@@ -6,6 +6,7 @@
  */
 
 /* internal import */
+const Store = require("../models/store.model");
 const User = require("../models/user.model");
 const remove = require("../utils/remove.util");
 const token = require("../utils/token.util");
@@ -128,6 +129,12 @@ exports.updateUser = async (id, data) => {
 exports.removeUser = async (id) => {
   const result = await User.findByIdAndDelete(id);
   await remove(result.avatar.public_id);
+
+  // remove from store
+  await Store.findByIdAndUpdate(result.store, {
+    $unset: { seller: result._id },
+    $set: { status: "inactive" },
+  });
 
   return result;
 };
