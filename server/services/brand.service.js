@@ -34,11 +34,10 @@ exports.displayBrand = async ({ id }) => {
 
 /* update specific brand */
 exports.updateBrand = async (id, data) => {
-  const result = await Brand.findByIdAndUpdate(
-    id,
-    { $set: data },
-    { runValidators: true, returnOriginal: false }
-  );
+  const result = await Brand.findByIdAndUpdate(id, data, {
+    runValidators: true,
+    returnOriginal: false,
+  });
   return result;
 };
 
