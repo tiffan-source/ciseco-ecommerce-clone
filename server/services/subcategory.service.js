@@ -39,14 +39,10 @@ exports.displaySubcategory = async ({ id }) => {
 
 /* update specific category */
 exports.updateSubcategory = async (id, data) => {
-  return await Subcategory.findByIdAndUpdate(
-    id,
-    { $set: data },
-    {
-      runValidators: true,
-      returnOriginal: false,
-    }
-  );
+  return await Subcategory.findByIdAndUpdate(id, data, {
+    runValidators: true,
+    returnOriginal: false,
+  });
 };
 
 /* remove specific category */
