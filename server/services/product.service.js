@@ -53,6 +53,17 @@ exports.displayProduct = async ({ id }) => {
 
 /* update specific product */
 exports.updateProduct = async (id, data) => {
+  if (Object.keys(data).includes("review")) {
+    return await Product.findByIdAndUpdate(
+      id,
+      { $push: { review: data.review } },
+      {
+        returnOriginal: false,
+        runValidators: true,
+      }
+    );
+  }
+
   return await Product.findByIdAndUpdate(id, data, {
     returnOriginal: false,
     runValidators: true,
