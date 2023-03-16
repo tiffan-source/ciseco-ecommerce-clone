@@ -6,6 +6,7 @@
  */
 
 /* internal import */
+const Product = require("../models/product.model");
 const Store = require("../models/store.model");
 const User = require("../models/user.model");
 const remove = require("../utils/remove.util");
@@ -134,6 +135,17 @@ exports.removeUser = async (id) => {
   await Store.findByIdAndUpdate(result.store, {
     $unset: { seller: result._id },
     $set: { status: "inactive" },
+  });
+
+  // remove from product review
+  const products = await Product.find({
+    review: { $elemMatch: { reviewer: result._id } },
+  });
+  products.forEach(async (product) => {
+    await Product.findByIdAndUpdate(product._id, {
+      $pull: { review: { reviewer: result._id } },
+      $set: { status: "inactive" },
+    });
   });
 
   return result;
