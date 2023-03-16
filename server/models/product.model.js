@@ -94,6 +94,31 @@ const productSchema = new mongoose.Schema(
       ref: "Store",
     },
 
+    // for review
+    review: [
+      {
+        reviewer: {
+          type: ObjectId,
+          ref: "User",
+        },
+        description: {
+          type: String,
+          trim: true,
+          unique: [true, "Same review already exists"],
+          maxLength: [500, "Your review name must be at least 500 characters"],
+        },
+        status: {
+          type: String,
+          enum: ["active", "inactive"],
+          default: "active",
+        },
+        createdAt: {
+          type: Date,
+          default: Date.now,
+        },
+      },
+    ],
+
     // for tags
     tags: {
       type: [{ type: String, trim: true }],
