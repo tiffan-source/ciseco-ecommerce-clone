@@ -1,6 +1,7 @@
 import { Fragment, useState } from "react";
 import { Combobox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import { useNavigate } from "react-router-dom";
 
 const people = [
   { id: 1, name: "Wade Cooper" },
@@ -18,6 +19,7 @@ const people = [
 export default function Searchbar() {
   const [selected, setSelected] = useState(people[0]);
   const [query, setQuery] = useState("");
+  const navigate = useNavigate();
 
   const filteredPeople =
     query === ""
@@ -38,6 +40,11 @@ export default function Searchbar() {
               className="w-full h-12 border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
               displayValue={(person) => person.name}
               onChange={(event) => setQuery(event.target.value)}
+              onKeyUp={(event) => {
+                if (event.which === 13) {
+                  navigate(`/search/${query}`);
+                }
+              }}
             />
             <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
               <ChevronUpDownIcon
