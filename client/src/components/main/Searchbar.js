@@ -42,7 +42,7 @@ export default function Searchbar() {
               onChange={(event) => setQuery(event.target.value)}
               onKeyUp={(event) => {
                 if (event.which === 13) {
-                  navigate(`/search/${query}`);
+                  navigate(`/search/${event.target.value}`);
                 }
               }}
             />
