@@ -4,7 +4,7 @@ import Searchbar from "./Searchbar";
 const Banner = () => {
   return (
     <>
-      <section className="container mx-auto lg:px-0 px-4">
+      <section className="lg:px-0">
         <section className="h-[67vh] overflow-hidden bg-[#f8f0ea] rounded-2xl">
           <div
             className="bg-center bg-no-repeat h-full relative"
