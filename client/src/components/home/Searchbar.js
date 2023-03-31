@@ -10,7 +10,7 @@ const Searchbar = () => {
         </h1>
         <div className="bg-white rounded-full md:p-3 p-2 flex items-center lg:max-w-xl w-4/5 lg:mx-0 mx-auto overflow-hidden shadow-lg">
           <input
-            className="flex-auto lg:text-lg md:text-2xl text-sm font-normal py-2 px-3 border-none outline-none focus:ring-0 rounded-full"
+            className="flex-auto lg:text-lg md:text-2xl text-sm font-normal py-2 pl-4 border-none outline-none focus:ring-0 rounded-full"
             type="text"
             name="search"
             id="search"
