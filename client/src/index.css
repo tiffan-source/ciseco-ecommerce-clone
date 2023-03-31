@@ -15,6 +15,33 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #b5b5b5 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #b5b5b5;
+  border-radius: 10px;
+  border: 0px none #ffffff;
+}
+
 .btn-primary {
   @apply inline-flex items-center justify-center rounded-full transition-colors text-sm sm:text-base lg:text-lg font-medium px-6 py-3 lg:px-8 lg:py-4 disabled:bg-opacity-90 bg-slate-900 hover:bg-slate-800 text-slate-50 shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2;
 }
+
+/* 
+  * Custom Scroll maker
+  * https://codepen.io/stephenpaton-tech/full/JjRvGmY
+*/
