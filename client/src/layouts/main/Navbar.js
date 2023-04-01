@@ -1,17 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "../../components/main/Dropdown";
-import Searchbar from "../../components/main/Searchbar";
 
 export default function NavBar() {
   const [navbar, setNavbar] = useState(false);
-  const [searchbar, setSearchbar] = useState(false);
 
   return (
     <nav className="w-full bg-white">
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
-          <div className="flex items-center justify-between py-3 md:py-5 md:block">
+          <div className="flex items-center justify-between py-4 md:py-5 md:block">
             <div className="flex items-center gap-x-4">
               <Link to="/">
                 <img
@@ -26,7 +24,7 @@ export default function NavBar() {
             </div>
             <div className="md:hidden">
               <button
-                className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
+                className="p-1 text-gray-700 rounded-md outline-none border-gray-400 border"
                 onClick={() => setNavbar(!navbar)}
               >
                 {navbar ? (
@@ -70,67 +68,6 @@ export default function NavBar() {
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
               <li className="text-gray-600 hover:text-blue-600">
-                {!searchbar ? (
-                  <Link
-                    to="/"
-                    className="flex gap-x-4 items-center"
-                    onClick={() => setSearchbar(true)}
-                  >
-                    <svg
-                      width="22"
-                      height="22"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      ></path>
-                      <path
-                        d="M22 22L20 20"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      ></path>
-                    </svg>
-                    <span className="block md:hidden">Search</span>
-                  </Link>
-                ) : (
-                  <Searchbar />
-                )}
-              </li>
-              <li className="text-gray-600 hover:text-blue-600">
-                <Link to="/" className="flex gap-x-4 items-center">
-                  <svg
-                    className=" w-6 h-6"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    ></path>
-                    <path
-                      d="M20.5899 22C20.5899 18.13 16.7399 15 11.9999 15C7.25991 15 3.40991 18.13 3.40991 22"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    ></path>
-                  </svg>
-                  <span className="block md:hidden">Profile</span>
-                </Link>
-              </li>
-              <li className="text-gray-600 hover:text-blue-600">
                 <Link to="/" className="flex gap-x-4 items-center">
                   <svg
                     className="w-6 h-6"
@@ -172,6 +109,32 @@ export default function NavBar() {
                     ></path>
                   </svg>
                   <span className="block md:hidden">Cart</span>
+                </Link>
+              </li>
+              <li className="text-gray-600 hover:text-blue-600">
+                <Link to="/" className="flex gap-x-4 items-center">
+                  <svg
+                    className=" w-6 h-6"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>
+                    <path
+                      d="M20.5899 22C20.5899 18.13 16.7399 15 11.9999 15C7.25991 15 3.40991 18.13 3.40991 22"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>
+                  </svg>
+                  <span className="block md:hidden">Profile</span>
                 </Link>
               </li>
             </ul>
