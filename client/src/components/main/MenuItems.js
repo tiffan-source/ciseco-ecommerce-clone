@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu } from "@headlessui/react";
+import { Popover } from "@headlessui/react";
 import { Link } from "react-router-dom";
 
 const MenuItems = () => {
@@ -194,7 +194,7 @@ const MenuItems = () => {
     <>
       <div className="p-7">
         {categories.map((category, index) => (
-          <Menu.Item key={index}>
+          <Popover.Panel key={index}>
             {({ active }) => (
               <Link
                 className={`${
@@ -215,7 +215,7 @@ const MenuItems = () => {
                 </div>
               </Link>
             )}
-          </Menu.Item>
+          </Popover.Panel>
         ))}
       </div>
     </>
