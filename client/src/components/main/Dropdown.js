@@ -1,12 +1,12 @@
 import { Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
+import { Transition, Popover } from "@headlessui/react";
 import MenuItems from "./MenuItems";
 
 export default function Dropdown() {
   return (
-    <Menu as="div" className="relative inline-block text-left z-50">
+    <Popover as="div" className="relative inline-block text-left z-50">
       <div>
-        <Menu.Button className="flex items-center font-medium">
+        <Popover.Button className="flex items-center font-medium">
           Category{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +22,7 @@ export default function Dropdown() {
               clipRule="evenodd"
             ></path>
           </svg>
-        </Menu.Button>
+        </Popover.Button>
       </div>
       <Transition
         as={Fragment}
@@ -33,7 +33,7 @@ export default function Dropdown() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute -right-[90px] w-80 overflow-y-auto origin-top-right divide-y divide-gray-100 rounded-2xl bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Popover.Panel className="absolute -right-[90px] w-80 overflow-y-auto origin-top-right divide-y divide-gray-100 rounded-2xl bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <MenuItems />
           <div className="p-4 bg-neutral-50">
             <a
@@ -48,8 +48,8 @@ export default function Dropdown() {
               </span>
             </a>
           </div>
-        </Menu.Items>
+        </Popover.Panel>
       </Transition>
-    </Menu>
+    </Popover>
   );
 }
