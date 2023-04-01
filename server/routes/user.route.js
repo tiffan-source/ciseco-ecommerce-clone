@@ -15,7 +15,6 @@ const photoController = require("../controllers/photo.controller");
 /* middleware imports */
 const upload = require("../middlewares/upload.middleware");
 const verify = require("../middlewares/verify.middleware");
-const authorize = require("../middlewares/authorize.middleware");
 
 /* router level connection */
 const router = express.Router();
@@ -25,12 +24,7 @@ const router = express.Router();
 router
   .route("/avatar")
   .post(upload.single("avatar"), photoController.uploadPhoto)
-  .patch(
-    upload.single("avatar"),
-    verify,
-    authorize("admin", "buyer", "seller", "supplier", "deliverer"),
-    photoController.updatePhoto
-  );
+  .patch(upload.single("avatar"), photoController.updatePhoto);
 
 // sign up an user
 router.post("/sign-up", userController.signUp);
@@ -46,26 +40,14 @@ router.get("/me", verify, userController.persistLogin);
 
 /* router methods CRUD integration */
 // display all users
-router.get("/all", verify, authorize("admin"), userController.displayUsers);
+router.get("/all", userController.displayUsers);
 
 // display, update and remove specific user
 router
   .route("/:id")
-  .get(
-    verify,
-    authorize("admin", "buyer", "seller", "supplier", "deliverer"),
-    userController.displayUser
-  )
-  .patch(
-    verify,
-    authorize("admin", "buyer", "seller", "supplier", "deliverer"),
-    userController.updateUser
-  )
-  .delete(
-    verify,
-    authorize("admin", "buyer", "seller", "supplier", "deliverer"),
-    userController.removeUser
-  );
+  .get(userController.displayUser)
+  .patch(userController.updateUser)
+  .delete(userController.removeUser);
 
 /* export user router */
 module.exports = router;
