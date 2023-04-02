@@ -4,8 +4,8 @@
   "description": "An eco shop & ecommerce responsive React template built by React.JS & Tailwind CSS",
   "main": "index.js",
   "engines": {
-    "node": ">=8.0.0",
-    "npm": ">=5.0.0"
+    "node": ">=14.x",
+    "npm": ">=8.x"
   },
   "scripts": {
     "start": "node index.js",
