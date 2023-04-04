@@ -2,6 +2,9 @@ import { lazy } from "react";
 import SplitRouter from "./SplitRouter";
 import Main from "../layouts/main/Main";
 import NotFound from "../pages/NotFound";
+import Signin from "../pages/main/Signin";
+import Signup from "../pages/main/Signup";
+import ForgotPassword from "../pages/main/ForgotPassword";
 const Home = lazy(() => import("../pages/main/Home"));
 
 const mainRoutes = {
@@ -13,6 +16,30 @@ const mainRoutes = {
       element: (
         <SplitRouter>
           <Home />
+        </SplitRouter>
+      ),
+    },
+    {
+      path: "/signin",
+      element: (
+        <SplitRouter>
+          <Signin />
+        </SplitRouter>
+      ),
+    },
+    {
+      path: "/signup",
+      element: (
+        <SplitRouter>
+          <Signup />
+        </SplitRouter>
+      ),
+    },
+    {
+      path: "/forgot-password",
+      element: (
+        <SplitRouter>
+          <ForgotPassword />
         </SplitRouter>
       ),
     },
