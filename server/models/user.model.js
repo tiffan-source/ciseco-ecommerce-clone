@@ -45,6 +45,8 @@ const userSchema = new mongoose.Schema(
         message:
           "Password {VALUE} should contain minimum 1 => uppercase, lowercase, number and symbol",
       },
+      minLength: [8, "Password should be at least 8 characters"],
+      maxLength: [20, "Password should be at most 20 characters"],
     },
 
     // for user confirm password
