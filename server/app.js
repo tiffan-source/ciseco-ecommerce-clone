@@ -27,7 +27,7 @@ const app = express();
 /* middleware connections */
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "*",
     methods: "GET, PATCH, POST, DELETE",
     preflightContinue: false,
     optionsSuccessStatus: 204,
