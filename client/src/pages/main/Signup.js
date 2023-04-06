@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useSignupMutation } from "../../features/auth/authApi";
+import { useUploadUserAvatarMutation } from "../../features/upload/uploadApi";
+import { toast } from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 const Signup = () => {
+  // react hook form credentials
   const {
     register,
     watch,
@@ -10,13 +15,54 @@ const Signup = () => {
     formState: { errors },
   } = useForm();
 
-  //   default value for date
+  // date credentials for date of birth
   const today = new Date();
   const date = today.setDate(today.getDate());
   const defaultValue = new Date(date).toISOString().split("T")[0]; // yyyy-mm-dd
 
+  // server side credentials
+  const [signup, { isLoading: registering, isSuccess: registered }] =
+    useSignupMutation();
+  const [uploadUserAvatar, { isLoading: uploading, isSuccess: uploaded }] =
+    useUploadUserAvatarMutation();
+
+  // grab avatar credentials from state
+  const { url, public_id } = useSelector((state) => state.upload);
+
+  useEffect(() => {
+    // sign up
+    if (registering) {
+      toast.loading("Signing up.", { id: "signup_user" });
+    } else if (registered) {
+      toast.success("Signed up.", {
+        id: "signup_user",
+      });
+    }
+
+    // upload avatar
+    if (uploading) {
+      toast.loading("Uploading avatar", {
+        id: "user_avatar",
+      });
+    } else if (uploaded) {
+      toast.success("Uploaded avatar.", {
+        id: "user_avatar",
+      });
+    }
+  }, [registering, registered, uploading, uploaded]);
+
+  // submit signup form
   const handleSignupForm = (data) => {
-    console.log(data);
+    data["phone"] = "+880" + data["phone"];
+    data["avatar"] = { url, public_id };
+
+    signup(data);
+  };
+
+  const handleAvatarUpload = (event) => {
+    const formData = new FormData();
+    formData.append("avatar", event.target.files[0]);
+    uploadUserAvatar(formData);
   };
 
   return (
@@ -187,8 +233,10 @@ const Signup = () => {
                     id="avatar"
                     name="avatar"
                     type="file"
+                    accept="image/png, image/jpeg, image/jpg, image/webp"
                     {...register("avatar", { required: true })}
                     className="w-full form-input rounded-md"
+                    onChange={handleAvatarUpload}
                   />
                 </div>
               </div>
@@ -251,10 +299,10 @@ const Signup = () => {
               {/* phone number */}
               <div>
                 <label
-                  htmlFor="phoneNumber"
+                  htmlFor="phone"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  {errors.phoneNumber ? (
+                  {errors.phone ? (
                     <span className="text-red-500 font-medium">
                       Phone Number field is required!
                     </span>
@@ -262,15 +310,23 @@ const Signup = () => {
                     "Phone Number (BD)"
                   )}
                 </label>
-                <div className="mt-1">
+                <div className="mt-1 flex">
+                  <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md">
+                    +880
+                  </span>
                   <input
-                    id="phoneNumber"
-                    name="phoneNumber"
+                    id="phone"
+                    name="phone"
                     type="tel"
                     autoComplete="off"
                     placeholder="i.e.: +8801xxxxxxxxx"
-                    {...register("phoneNumber", { required: true })}
-                    className="w-full form-input rounded-md"
+                    maxLength="10"
+                    {...register("phone", { required: true })}
+                    className={`w-full form-input rounded-r-md ${
+                      (watch("phone")?.length !== 10 ||
+                        watch("phone")[0] !== "1") &&
+                      "focus:border-red-500 focus:ring-1 focus:ring-red-500"
+                    }`}
                   />
                 </div>
               </div>
