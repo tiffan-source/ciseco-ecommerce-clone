@@ -20,7 +20,7 @@ const mainRoutes = {
       ),
     },
     {
-      path: "/signin",
+      path: "/sign-in",
       element: (
         <SplitRouter>
           <Signin />
@@ -28,7 +28,7 @@ const mainRoutes = {
       ),
     },
     {
-      path: "/signup",
+      path: "/sign-up",
       element: (
         <SplitRouter>
           <Signup />
