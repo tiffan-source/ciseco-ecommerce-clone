@@ -1,16 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useSigninMutation } from "../../features/auth/authApi";
+import { toast } from "react-hot-toast";
 
 const Signin = () => {
+  // react hook form credentials
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  // server side credentials
+  const [signin, { isLoading: logging, isSuccess: logged }] =
+    useSigninMutation();
+
+  useEffect(() => {
+    // sign in
+    if (logging) {
+      toast.loading("Signing in.", { id: "signin_user" });
+    } else if (logged) {
+      toast.success("Signed in.", {
+        id: "signin_user",
+      });
+    }
+  }, [logging, logged]);
+
   const handleSigninForm = (data) => {
-    console.log(data);
+    signin(data);
   };
 
   return (
@@ -29,7 +47,7 @@ const Signin = () => {
           <p className="mt-2 text-center text-sm text-gray-600 max-w">
             Won't have an account?
             <Link
-              to="/signup"
+              to="/sign-up"
               className="font-medium text-indigo-600 hover:text-indigo-500 ml-1"
             >
               Sign up
@@ -81,7 +99,12 @@ const Signin = () => {
                     "Password"
                   )}
 
-                  <Link to="/forgot-password" className="text-indigo-600 hover:text-indigo-500">Forgot Password</Link>
+                  <Link
+                    to="/forgot-password"
+                    className="text-indigo-600 hover:text-indigo-500"
+                  >
+                    Forgot Password
+                  </Link>
                 </label>
                 <div className="mt-1">
                   <input
