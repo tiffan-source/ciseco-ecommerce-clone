@@ -81,7 +81,7 @@ const Signup = () => {
           <p className="mt-2 text-center text-sm text-gray-600 max-w">
             Already registered?
             <Link
-              to="/signin"
+              to="/sign-in"
               className="font-medium text-indigo-600 hover:text-indigo-500 ml-1"
             >
               Sign in
