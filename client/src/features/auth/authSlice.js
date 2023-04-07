@@ -45,6 +45,11 @@ const authSlice = createSlice({
     stopLoading: (state) => {
       state.isLoading = false;
     },
+    logout: (state) => {
+      state.user = {};
+      state.isLoading = false;
+      localStorage.removeItem("accessToken");
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchUser.pending, (state) => {
@@ -62,5 +67,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { setUser, stopLoading } = authSlice.actions;
+export const { setUser, stopLoading, logout } = authSlice.actions;
 export default authSlice.reducer;

@@ -1,8 +1,13 @@
 import { Menu, Transition } from "@headlessui/react";
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../features/auth/authSlice";
 
 const Profile = () => {
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+
   const items = [
     {
       name: "Dashboard",
@@ -71,16 +76,29 @@ const Profile = () => {
               </Menu.Item>
             ))}
             <Menu.Item>
-              {({ active }) => (
-                <button
-                  className={`${
-                    active ? "shadow" : "text-gray-900"
-                  } group flex gap-x-4 w-full items-center rounded-md px-2 py-2 text-sm`}
-                >
-                  <LogoutIcon className="h-5 w-5" aria-hidden="true" />
-                  Logout
-                </button>
-              )}
+              {({ active }) =>
+                Object.keys(user).length === 0 ? (
+                  <Link
+                    to="/sign-in"
+                    className={`${
+                      active ? "shadow" : "text-gray-900"
+                    } group flex gap-x-4 w-full items-center rounded-md px-2 py-2 text-sm`}
+                  >
+                    <LogoutIcon className="h-5 w-5" aria-hidden="true" />
+                    Login
+                  </Link>
+                ) : (
+                  <button
+                    className={`${
+                      active ? "shadow" : "text-gray-900"
+                    } group flex gap-x-4 w-full items-center rounded-md px-2 py-2 text-sm`}
+                    onClick={() => dispatch(logout())}
+                  >
+                    <LogoutIcon className="h-5 w-5" aria-hidden="true" />
+                    Logout
+                  </button>
+                )
+              }
             </Menu.Item>
           </div>
         </Menu.Items>
