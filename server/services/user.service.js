@@ -73,7 +73,7 @@ exports.forgotPassword = async ({ email, password }) => {
   await User.findOneAndUpdate(
     { email },
     { $set: { password: hashedPassword } },
-    { runValidators: true }
+    { runValidators: true, returnOriginal: false }
   );
 
   return result;
