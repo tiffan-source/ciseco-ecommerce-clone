@@ -1,16 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useForgotPasswordMutation } from "../../features/auth/authApi";
+import { toast } from "react-hot-toast";
 
 const ForgotPassword = () => {
+  // react hook form credentials
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  // server side credentials
+  const [forgotPassword, { isLoading: resetting, isSuccess: reset }] =
+    useForgotPasswordMutation();
+
+  useEffect(() => {
+    // reset password
+    if (resetting) {
+      toast.loading("Resetting password.", { id: "reset_password" });
+    } else if (reset) {
+      toast.success("Reset password.", {
+        id: "reset_password",
+      });
+    }
+  }, [resetting, reset]);
+
   const handleForgotPasswordForm = (data) => {
-    console.log(data);
+    forgotPassword(data);
   };
 
   return (
@@ -29,7 +47,7 @@ const ForgotPassword = () => {
           <p className="mt-2 text-center text-sm text-gray-600 max-w">
             Remember account password?
             <Link
-              to="/signin"
+              to="/sign-in"
               className="font-medium text-indigo-600 hover:text-indigo-500 ml-1"
             >
               Sign in
