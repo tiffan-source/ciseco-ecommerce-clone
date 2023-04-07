@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "../../components/main/Dropdown";
 import Profile from "../../components/main/Profile";
+import LazyLoadingImage from "../../components/LazyLoadingImage";
 
 export default function NavBar() {
   const [navbar, setNavbar] = useState(false);
@@ -13,11 +14,10 @@ export default function NavBar() {
           <div className="flex items-center justify-between py-4 md:py-5 md:block">
             <div className="flex items-center gap-x-4">
               <Link to="/">
-                <img
+                <LazyLoadingImage
                   src="/logo.png"
                   alt="logo"
                   className="block max-h-8 sm:max-h-10"
-                  loading="lazy"
                 />
               </Link>
               <span className="hidden md:block h-10 border-l border-slate-200" />

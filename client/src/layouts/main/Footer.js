@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LazyLoadingImage from "../../components/LazyLoadingImage";
 
 const Footer = () => {
   const today = new Date();
@@ -11,10 +12,9 @@ const Footer = () => {
         <div className="container mx-auto">
           <div className="flex md:flex-row md:justify-between flex-col items-center md:gap-0 gap-y-4">
             <Link to="/" title="Ciseco ECommerce">
-              <img
+              <LazyLoadingImage
                 src="logo.png"
                 alt="logo"
-                loading="lazy"
                 height="150"
                 width="150"
               />

@@ -1,4 +1,5 @@
 import React from "react";
+import LazyLoadingImage from "../LazyLoadingImage";
 
 const BuyingSteps = () => {
   const steps = [
@@ -61,11 +62,10 @@ const BuyingSteps = () => {
               className="nc-NcImage mb-4 sm:mb-10 max-w-[140px] mx-auto"
               data-nc-id="NcImage"
             >
-              <img
+              <LazyLoadingImage
                 src={step.thumbnail}
                 className="rounded-3xl"
                 alt={step.title}
-                loading="lazy"
               />
             </div>
             <div className="text-center mt-auto space-y-5">

@@ -1,5 +1,6 @@
 import React from "react";
 import Searchbar from "./Searchbar";
+import LazyLoadingImage from "../LazyLoadingImage";
 
 const Banner = () => {
   return (
@@ -12,11 +13,10 @@ const Banner = () => {
           >
             <Searchbar />
             <div className="absolute top-0 left-0 h-full w-full bg-black/30 z-10 lg:hidden" />
-            <img
+            <LazyLoadingImage
               src="/assets/banner/banner-model.png"
               alt="banner model"
-              loading="lazy"
-              className="max-w-full absolute bottom-0 right-0 lg:w-[40%]"
+              className="absolute bottom-0 right-0 lg:w-[40%]"
             />
           </div>
         </section>
