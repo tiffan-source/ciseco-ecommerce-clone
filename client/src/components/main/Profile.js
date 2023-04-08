@@ -77,17 +77,17 @@ const Profile = () => {
         <Menu.Items className="absolute md:-left-[500%] left-0 mt-2 w-64 origin-top-right divide-y divide-gray-100 bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none p-7 rounded-2xl">
           <div className="flex flex-col gap-y-4">
             {Object.keys(user).length ? (
-              <div class="flex items-center space-x-3">
-                <div class="relative flex-shrink-0 inline-flex items-center justify-center text-neutral-100 uppercase font-semibold shadow-inner rounded-full w-12 h-12 ring-1 ring-white">
+              <div className="flex items-center space-x-3">
+                <div className="relative flex-shrink-0 inline-flex items-center justify-center text-neutral-100 uppercase font-semibold shadow-inner rounded-full w-12 h-12 ring-1 ring-white">
                   <LazyLoadingImage
                     className="absolute inset-0 w-full h-full object-cover rounded-full"
                     src={user?.avatar?.url}
                     alt={user?.name}
                   />
                 </div>
-                <div class="flex-grow">
-                  <h4 class="font-semibold">{user?.name}</h4>
-                  <p class="text-xs mt-0.5">{user?.email}</p>
+                <div className="flex-grow">
+                  <h4 className="font-semibold">{user?.name}</h4>
+                  <p className="text-xs mt-0.5">{user?.email}</p>
                 </div>
               </div>
             ) : (
@@ -116,12 +116,12 @@ const Profile = () => {
                         active ? "text-slate-900/50 shadow-sm" : "text-gray-900"
                       }`}
                     >
-                      <div class="flex items-center justify-center flex-shrink-0 text-neutral-500">
+                      <div className="flex items-center justify-center flex-shrink-0 text-neutral-500">
                         <item.icon />
                       </div>
 
-                      <div class="ml-4">
-                        <p class="text-sm font-medium ">{item.name}</p>
+                      <div className="ml-4">
+                        <p className="text-sm font-medium ">{item.name}</p>
                       </div>
                     </Link>
                   )}
@@ -130,14 +130,14 @@ const Profile = () => {
               <>
                 {Object.keys(user).length && (
                   <button
-                    class="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-neutral-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                    className="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-neutral-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
                     onClick={() => dispatch(logout())}
                   >
-                    <div class="flex items-center justify-center flex-shrink-0 text-neutral-500">
+                    <div className="flex items-center justify-center flex-shrink-0 text-neutral-500">
                       <LogoutIcon />
                     </div>
-                    <div class="ml-4">
-                      <p class="text-sm font-medium ">Logout</p>
+                    <div className="ml-4">
+                      <p className="text-sm font-medium ">Logout</p>
                     </div>
                   </button>
                 )}
