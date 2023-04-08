@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useSignupMutation } from "../../features/auth/authApi";
 import { useUploadUserAvatarMutation } from "../../features/upload/uploadApi";
@@ -25,6 +25,16 @@ const Signup = () => {
     useSignupMutation();
   const [uploadUserAvatar, { isLoading: uploading, isSuccess: uploaded }] =
     useUploadUserAvatarMutation();
+
+  // user credentials from state
+  const { user } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (Object.keys(user).length) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   // grab avatar credentials from state
   const { url, public_id } = useSelector((state) => state.upload);
@@ -69,12 +79,6 @@ const Signup = () => {
     <>
       <div className="min-h-screen bg-white flex flex-col justify-center py-12 px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <img
-            className="mx-auto h-12 w-auto"
-            src="logo.png"
-            alt="Logo"
-            loading="lazy"
-          />
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Create your account
           </h2>
@@ -311,7 +315,7 @@ const Signup = () => {
                   )}
                 </label>
                 <div className="mt-1 flex">
-                  <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md">
+                  <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md">
                     +880
                   </span>
                   <input

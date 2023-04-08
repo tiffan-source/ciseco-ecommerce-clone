@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useSigninMutation } from "../../features/auth/authApi";
 import { toast } from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 const Signin = () => {
   // react hook form credentials
@@ -15,6 +16,16 @@ const Signin = () => {
   // server side credentials
   const [signin, { isLoading: logging, isSuccess: logged }] =
     useSigninMutation();
+
+  // user credentials from state
+  const { user } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (Object.keys(user).length) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   useEffect(() => {
     // sign in
@@ -35,12 +46,6 @@ const Signin = () => {
     <>
       <div className="min-h-screen bg-white flex flex-col justify-center py-12 px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <img
-            className="mx-auto h-12 w-auto"
-            src="logo.png"
-            alt="Logo"
-            loading="lazy"
-          />
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Login your account
           </h2>
