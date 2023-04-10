@@ -115,7 +115,7 @@ const AddNewProduct = () => {
                   ) : (
                     <span className="flex justify-between">
                       Product price (BDT){" "}
-                      <span className="hover:text-gray-500">{">="} 0</span>{" "}
+                      <span className="hover:text-gray-500">{">"} 0</span>{" "}
                     </span>
                   )}
                 </label>
