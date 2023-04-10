@@ -31,9 +31,9 @@ const Profile = () => {
       link: "/contact-us",
     },
     {
-      name: "Help",
-      icon: HelpIcon,
-      link: "/help",
+      name: "About Us",
+      icon: AboutIcon,
+      link: "/about-us",
     },
   ];
 
@@ -273,7 +273,7 @@ function OrderIcon(props) {
   );
 }
 
-function HelpIcon(props) {
+function AboutIcon(props) {
   return (
     <svg
       {...props}
