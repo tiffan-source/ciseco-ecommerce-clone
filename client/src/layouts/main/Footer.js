@@ -10,7 +10,7 @@ const Footer = () => {
     <>
       <footer className="bg-white shadow py-8">
         <div className="container mx-auto">
-          <div className="flex md:flex-row md:justify-between flex-col items-center md:gap-0 gap-y-4">
+          <div className="flex md:flex-row md:justify-between flex-col items-center md:gap-0 gap-y-4 md:px-0 px-4">
             <Link to="/" title="Ciseco ECommerce">
               <LazyLoadingImage
                 src="logo.png"
