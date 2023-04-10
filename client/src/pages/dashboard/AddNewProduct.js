@@ -11,15 +11,15 @@ const AddNewProduct = () => {
   } = useForm();
 
   const [tags, setTags] = useState([]);
+  const [productThumbnail, setProductThumbnail] = useState(null);
+  const [productGallery, setProductGallery] = useState([]);
 
   // submit add product form
   const handleAddProductForm = (data) => {
     data.tags = tags;
+    data.thumbnail = productThumbnail;
+    data.gallery = productGallery;
     console.log(data);
-  };
-
-  const handleThumbnailUpload = (event) => {
-    console.log(event.target.files[0]);
   };
 
   return (
@@ -321,19 +321,87 @@ const AddNewProduct = () => {
               )}
             </label>
             <div className="mt-1">
-              <input
-                id="thumbnail"
-                name="thumbnail"
-                type="file"
-                autoComplete="off"
-                placeholder="Enter your product thumbnail"
-                {...register("thumbnail", { required: true, maxLength: 100 })}
-                className={`w-full form-input rounded-md ${
-                  watch("thumbnail")?.length > 100 &&
-                  "focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                }`}
-                onChange={handleThumbnailUpload}
-              />
+              {/* <div class="relative overflow-hidden flex rounded-md">
+                <img
+                  src={
+                    productThumbnail === null
+                      ? "https://placehold.co/765x850"
+                      : productThumbnail
+                  }
+                  alt="placeholder preview"
+                  class="max-w-full object-cover z-0 rounded-md"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center text-neutral-50 cursor-pointer">
+                  <svg
+                    width="30"
+                    height="30"
+                    viewBox="0 0 30 30"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M17.5 5H7.5C6.83696 5 6.20107 5.26339 5.73223 5.73223C5.26339 6.20107 5 6.83696 5 7.5V20M5 20V22.5C5 23.163 5.26339 23.7989 5.73223 24.2678C6.20107 24.7366 6.83696 25 7.5 25H22.5C23.163 25 23.7989 24.7366 24.2678 24.2678C24.7366 23.7989 25 23.163 25 22.5V17.5M5 20L10.7325 14.2675C11.2013 13.7988 11.8371 13.5355 12.5 13.5355C13.1629 13.5355 13.7987 13.7988 14.2675 14.2675L17.5 17.5M25 12.5V17.5M25 17.5L23.0175 15.5175C22.5487 15.0488 21.9129 14.7855 21.25 14.7855C20.5871 14.7855 19.9513 15.0488 19.4825 15.5175L17.5 17.5M17.5 17.5L20 20M22.5 5H27.5M25 2.5V7.5M17.5 10H17.5125"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                  <span class="mt-1 text-xs">Change Image</span>
+                </div>
+                <input
+                  id="thumbnail"
+                  name="thumbnail"
+                  type="file"
+                  accept=".png, .jpg, .jpeg, .webp"
+                  autoComplete="off"
+                  placeholder="Enter your product thumbnail"
+                  {...register("thumbnail", { required: true, maxLength: 100 })}
+                  className={`w-full form-input rounded-md absolute inset-0 opacity-0 cursor-pointer ${
+                    watch("thumbnail")?.length > 100 &&
+                    "focus:border-red-500 focus:ring-1 focus:ring-red-500"
+                  }`}
+                  onChange={(event) => {
+                    setProductThumbnail(
+                      URL.createObjectURL(event.target.files[0])
+                    );
+                  }}
+                />
+              </div> */}
+              <div className="flex items-center gap-x-4">
+                <img
+                  src={
+                    productThumbnail === null
+                      ? "https://placehold.co/765x850"
+                      : productThumbnail
+                  }
+                  alt="thumbnail preview"
+                  loading="lazy"
+                  className="w-20 h-20 max-w-full object-cover object-center rounded-md"
+                />
+                {productThumbnail === null && (
+                  <input
+                    id="gallery"
+                    name="gallery"
+                    type="file"
+                    multiple
+                    accept=".png, .jpg, .jpeg, .webp"
+                    autoComplete="off"
+                    placeholder="Enter your product gallery"
+                    {...register("gallery", { required: true, maxLength: 100 })}
+                    className={`w-full form-input rounded-md ${
+                      watch("gallery")?.length > 100 &&
+                      "focus:border-red-500 focus:ring-1 focus:ring-red-500"
+                    }`}
+                    onChange={(event) => {
+                      setProductThumbnail(
+                        URL.createObjectURL(event.target.files[0])
+                      );
+                    }}
+                  />
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -353,25 +421,49 @@ const AddNewProduct = () => {
                 <span className="flex justify-between">
                   Product gallery (765x850){" "}
                   <span className="hover:text-gray-500">
-                    {"<="} 1MB (Recommended)
+                    {"<="} 1MB & 5 (Recommended)
                   </span>{" "}
                 </span>
               )}
             </label>
             <div className="mt-1">
-              <input
-                id="gallery"
-                name="gallery"
-                type="file"
-                autoComplete="off"
-                placeholder="Enter your product gallery"
-                multiple
-                {...register("gallery", { required: true, maxLength: 100 })}
-                className={`w-full form-input rounded-md ${
-                  watch("gallery")?.length > 100 &&
-                  "focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                }`}
-              />
+              <div className="flex gap-x-2 overflow-x-auto">
+                {productGallery.map((thumb, index) => (
+                  <img
+                    key={index}
+                    src={thumb}
+                    alt="thumbnail preview"
+                    loading="lazy"
+                    className="w-20 h-20 max-w-full object-cover object-center rounded-md"
+                  />
+                ))}
+              </div>
+              {productGallery?.length === 0 && (
+                <input
+                  id="gallery"
+                  name="gallery"
+                  type="file"
+                  multiple
+                  accept=".png, .jpg, .jpeg, .webp"
+                  autoComplete="off"
+                  placeholder="Enter your product gallery"
+                  {...register("gallery", { required: true, maxLength: 100 })}
+                  className={`w-full form-input rounded-md ${
+                    watch("gallery")?.length > 100 &&
+                    "focus:border-red-500 focus:ring-1 focus:ring-red-500"
+                  }`}
+                  onChange={(event) => {
+                    const thumbnails = event.target.files;
+                    for (let index = 0; index < thumbnails.length; index++) {
+                      setProductGallery((current) => [
+                        ...current,
+                        URL.createObjectURL(thumbnails[index]),
+                      ]);
+                    }
+                    setProductGallery(URL.createObjectURL(event.target.files));
+                  }}
+                />
+              )}
             </div>
           </div>
         </div>
