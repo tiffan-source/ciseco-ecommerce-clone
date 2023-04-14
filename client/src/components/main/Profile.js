@@ -83,6 +83,8 @@ const Profile = () => {
                     className="absolute inset-0 w-full h-full object-cover rounded-full"
                     src={user?.avatar?.url}
                     alt={user?.name}
+                    height={"48"}
+                    width={"48"}
                   />
                 </div>
                 <div className="flex-grow">
