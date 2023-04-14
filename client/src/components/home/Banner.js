@@ -17,6 +17,8 @@ const Banner = () => {
               src="/assets/banner/banner-model.png"
               alt="banner model"
               className="absolute bottom-0 right-0 lg:w-[40%]"
+              height={"614"}
+              width={"601"}
             />
           </div>
         </section>
