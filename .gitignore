@@ -31,3 +31,10 @@ server/node_modules
 
 #misc
 server/.env
+client/src/pages/dashboard/ListProduct.js
+client/.yarn
+server/.yarn
+package.json
+.yarnrc.yml
+.yarnrc
+.yarn
