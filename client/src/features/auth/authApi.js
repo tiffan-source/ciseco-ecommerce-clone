@@ -20,6 +20,7 @@ const authApi = apiSlice.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      providesTags: ["User"],
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           const userData = await queryFulfilled;
