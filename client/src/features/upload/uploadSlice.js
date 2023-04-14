@@ -1,20 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  url: "",
-  public_id: "",
+  photo: {},
+  gallery: [],
 };
 
 const uploadSlice = createSlice({
   name: "upload",
   initialState,
   reducers: {
-    setUpload: (state, action) => {
-      state.url = action.payload.url;
-      state.public_id = action.payload.public_id;
+    setPhoto: (state, action) => {
+      state.photo = action.payload;
+    },
+    setGallery: (state, action) => {
+      state.gallery = action.payload;
     },
   },
 });
 
-export const { setUpload } = uploadSlice.actions;
+export const { setPhoto, setGallery } = uploadSlice.actions;
 export default uploadSlice.reducer;
