@@ -15,8 +15,9 @@ const Footer = () => {
               <LazyLoadingImage
                 src="logo.png"
                 alt="logo"
-                height="150"
-                width="150"
+                className="block max-h-8 sm:max-h-10"
+                height={"150"}
+                width={"150"}
               />
             </Link>
             <p>© {year} Ciseco ECommerce, All Right Reserved.</p>
