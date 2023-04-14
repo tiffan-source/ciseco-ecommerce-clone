@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useSignupMutation } from "../../features/auth/authApi";
-import { useUploadUserAvatarMutation } from "../../features/upload/uploadApi";
+import { useUploadPhotoMutation } from "../../features/upload/uploadApi";
 import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
 
@@ -13,6 +13,7 @@ const Signup = () => {
     watch,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   // date credentials for date of birth
@@ -24,7 +25,7 @@ const Signup = () => {
   const [signup, { isLoading: registering, isSuccess: registered }] =
     useSignupMutation();
   const [uploadUserAvatar, { isLoading: uploading, isSuccess: uploaded }] =
-    useUploadUserAvatarMutation();
+    useUploadPhotoMutation();
 
   // user credentials from state
   const { user } = useSelector((state) => state.auth);
@@ -37,20 +38,16 @@ const Signup = () => {
   }, [user, navigate]);
 
   // grab avatar credentials from state
-  const { url, public_id } = useSelector((state) => state.upload);
+  const { photo } = useSelector((state) => state.upload);
 
   useEffect(() => {
-    // sign up
     if (registering) {
       toast.loading("Signing up.", { id: "signup_user" });
     } else if (registered) {
       toast.success("Signed up.", {
         id: "signup_user",
       });
-    }
-
-    // upload avatar
-    if (uploading) {
+    } else if (uploading) {
       toast.loading("Uploading avatar", {
         id: "user_avatar",
       });
@@ -64,15 +61,10 @@ const Signup = () => {
   // submit signup form
   const handleSignupForm = (data) => {
     data["phone"] = "+880" + data["phone"];
-    data["avatar"] = { url, public_id };
+    data["avatar"] = { url: photo.url, public_id: photo.public_id };
 
     signup(data);
-  };
-
-  const handleAvatarUpload = (event) => {
-    const formData = new FormData();
-    formData.append("avatar", event.target.files[0]);
-    uploadUserAvatar(formData);
+    reset();
   };
 
   return (
@@ -233,15 +225,31 @@ const Signup = () => {
                   )}
                 </label>
                 <div className="mt-1">
-                  <input
-                    id="avatar"
-                    name="avatar"
-                    type="file"
-                    accept="image/png, image/jpeg, image/jpg, image/webp"
-                    {...register("avatar", { required: true })}
-                    className="w-full form-input rounded-md"
-                    onChange={handleAvatarUpload}
-                  />
+                  {Object.keys(photo).length ? (
+                    <input
+                      type="text"
+                      className="form-input rounded-md w-full"
+                      value="Avatar uploaded!"
+                      readOnly
+                    />
+                  ) : (
+                    <input
+                      id="avatar"
+                      name="avatar"
+                      type="file"
+                      accept="image/png, image/jpeg, image/jpg, image/webp"
+                      {...register("avatar", { required: true })}
+                      className="w-full form-input rounded-md"
+                      onChange={(event) => {
+                        const formData = new FormData();
+                        formData.append("avatar", event.target.files[0]);
+                        uploadUserAvatar({
+                          route: "user/avatar",
+                          photo: formData,
+                        });
+                      }}
+                    />
+                  )}
                 </div>
               </div>
 
