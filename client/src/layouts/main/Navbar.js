@@ -18,6 +18,8 @@ export default function NavBar() {
                   src="/logo.png"
                   alt="logo"
                   className="block max-h-8 sm:max-h-10"
+                  height={"150"}
+                  width={"150"}
                 />
               </Link>
               <span className="hidden md:block h-10 border-l border-slate-200" />
