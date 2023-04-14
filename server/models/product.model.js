@@ -104,7 +104,6 @@ const productSchema = new mongoose.Schema(
         description: {
           type: String,
           trim: true,
-          unique: [true, "Same review already exists"],
           maxLength: [500, "Your review name must be at least 500 characters"],
         },
         status: {
