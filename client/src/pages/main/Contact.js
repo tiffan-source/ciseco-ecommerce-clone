@@ -116,30 +116,30 @@ const Contact = () => {
               </div>
             </form>
 
-            <div class="space-y-8 md:order-1 order-2">
+            <div className="space-y-8 md:order-1 order-2">
               <div>
-                <h3 class="uppercase font-semibold text-sm tracking-wider">
+                <h3 className="uppercase font-semibold text-sm tracking-wider">
                   🗺 ADDRESS
                 </h3>
-                <span class="block mt-2 text-neutral-500">
+                <span className="block mt-2 text-neutral-500">
                   <a href="https://goo.gl/maps/EgcyzxTwDaB4zgzn7">
                     41/02/01 - Pathantola, Dhamrai, Dhaka
                   </a>
                 </span>
               </div>
               <div>
-                <h3 class="uppercase font-semibold text-sm tracking-wider">
+                <h3 className="uppercase font-semibold text-sm tracking-wider">
                   💌 EMAIL
                 </h3>
-                <span class="block mt-2 text-neutral-500">
+                <span className="block mt-2 text-neutral-500">
                   <a href="mailto:hasib143sl@gmail.com">hasib143sl@gmail.com</a>
                 </span>
               </div>
               <div>
-                <h3 class="uppercase font-semibold text-sm tracking-wider">
+                <h3 className="uppercase font-semibold text-sm tracking-wider">
                   ☎️ PHONE
                 </h3>
-                <span class="block mt-2 text-neutral-500">
+                <span className="block mt-2 text-neutral-500">
                   <a href="tel:+8801906315901">+8801906-315901</a>
                 </span>
               </div>
