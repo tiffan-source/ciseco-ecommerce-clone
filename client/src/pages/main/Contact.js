@@ -29,7 +29,7 @@ const Contact = () => {
         <div className="mt-8">
           <div className="bg-white py-8 px-6 rounded-lg sm:px-10 grid md:grid-cols-2 grid-cols-1 md:gap-0 gap-y-12 items-center justify-items-center max-w-7xl mx-auto">
             <form
-              className="mb-0 space-y-6 md:order-2 order-1"
+              className="mb-0 space-y-6 md:order-2 order-1 w-full"
               onSubmit={handleSubmit(handleContactUsForm)}
             >
               <div>
