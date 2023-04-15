@@ -21,6 +21,7 @@ const ListProduct = () => {
     useRemoveProductMutation();
 
   const products = productsData?.data || [];
+  const count = productsData?.count || 0;
 
   return (
     <>
@@ -159,6 +160,61 @@ const ListProduct = () => {
                 </table>
               </div>
             </div>
+          </div>
+
+          <div class="inline-flex rounded mt-4 justify-center" role="group">
+            <button
+              type="button"
+              class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+              onClick={() => page >= 2 && setPage(page - 1)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-chevron-left w-4 h-4 mr-2 fill-current"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
+                />
+              </svg>
+              Prev
+            </button>
+            <select
+              id="gender"
+              name="gender"
+              className="form-select border-gray-200"
+              onChange={(event) => setLimit(Number(event.target.value))}
+            >
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="50">50</option>
+            </select>
+            <button
+              type="button"
+              class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+              onClick={() =>
+                page < Math.ceil(count / limit) && setPage(page + 1)
+              }
+            >
+              Next
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-chevron-right w-4 h-4 ml-2 fill-current"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                />
+              </svg>
+            </button>
           </div>
         </div>
       )}
