@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   useDisplayProductsQuery,
   useRemoveProductMutation,
 } from "../../../features/product/productApi";
 import LazyLoadingImage from "../../../components/LazyLoadingImage";
 import { Link } from "react-router-dom";
-import { toast } from "react-hot-toast";
-import DashboardLoading from "../DashboardLoading";
-import DashboardInlineLoading from "../DashboardInlineLoading";
+import DashboardLoading from "../../../components/loading/DashboardLoading";
+import DashboardInlineLoading from "../../../components/loading/DashboardInlineLoading";
 
 const ListProduct = () => {
   const [page, setPage] = useState(1);
