@@ -4,6 +4,7 @@ import Analytics from "../pages/dashboard/Analytics";
 import UpdateProduct from "../pages/dashboard/product/UpdateProduct";
 import PrivateRoute from "../utils/PrivateRoutes";
 import SplitRouter from "./SplitRouter";
+import ListProduct from "../pages/dashboard/product/ListProduct";
 
 const dashboardRoutes = {
   path: "/dashboard",
@@ -22,6 +23,10 @@ const dashboardRoutes = {
     {
       path: "add-new-product",
       element: <SplitRouter>{<AddNewProduct />}</SplitRouter>,
+    },
+    {
+      path: "list-product",
+      element: <SplitRouter>{<ListProduct />}</SplitRouter>,
     },
     {
       path: "update-product/:pid",
