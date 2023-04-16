@@ -2,11 +2,11 @@ import React from "react";
 
 const DashboardInlineLoading = () => {
   return (
-    <section class="flex items-center">
+    <section className="flex items-center">
       <div role="status">
         <svg
           aria-hidden="true"
-          class="w-5 h-5 mr-2 text-gray-200 animate-spin fill-blue-600"
+          className="w-5 h-5 mr-2 text-gray-200 animate-spin fill-blue-600"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +20,7 @@ const DashboardInlineLoading = () => {
             fill="currentFill"
           />
         </svg>
-        <span class="sr-only">Loading...</span>
+        <span className="sr-only">Loading...</span>
       </div>
       Removing
     </section>
