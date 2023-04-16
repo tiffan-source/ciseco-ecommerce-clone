@@ -20,7 +20,7 @@ const ListCategory = () => {
   const [removeCategory, { isLoading: removingCategory }] =
     useRemoveCategoryMutation();
 
-  const products = categoriesData?.data || [];
+  const categories = categoriesData?.data || [];
   const count = categoriesData?.count || 0;
 
   return (
@@ -74,7 +74,7 @@ const ListCategory = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {products.map(
+                    {categories.map(
                       ({ _id, thumbnail, title, createdAt, updatedAt }) => (
                         <tr
                           key={_id}

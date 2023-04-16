@@ -8,6 +8,9 @@ import ListProduct from "../pages/dashboard/product/ListProduct";
 import AddNewCategory from "../pages/dashboard/category/AddNewCategory";
 import ListCategory from "../pages/dashboard/category/ListCategory";
 import UpdateCategory from "../pages/dashboard/category/UpdateCategory";
+import AddNewSubcategory from "../pages/dashboard/subcategory/AddNewSubcategory";
+import ListSubcategory from "../pages/dashboard/subcategory/ListSubcategory";
+import UpdateSubcategory from "../pages/dashboard/subcategory/UpdateSubcategory";
 
 const dashboardRoutes = {
   path: "/dashboard",
@@ -46,6 +49,18 @@ const dashboardRoutes = {
     {
       path: "update-category/:cid",
       element: <SplitRouter>{<UpdateCategory />}</SplitRouter>,
+    },
+    {
+      path: "add-new-subcategory",
+      element: <SplitRouter>{<AddNewSubcategory />}</SplitRouter>,
+    },
+    {
+      path: "list-subcategory",
+      element: <SplitRouter>{<ListSubcategory />}</SplitRouter>,
+    },
+    {
+      path: "update-subcategory/:sid",
+      element: <SplitRouter>{<UpdateSubcategory />}</SplitRouter>,
     },
   ],
 };

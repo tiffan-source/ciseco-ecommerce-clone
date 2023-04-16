@@ -15,7 +15,10 @@ const categoryApi = apiSlice.injectEndpoints({
     // get all categories
     displayCategories: builder.query({
       query: ({ page, limit }) => ({
-        url: `api/category/all?page=${page}&limit=${limit}`,
+        url:
+          page && limit
+            ? `api/category/all?page=${page}&limit=${limit}`
+            : `api/category/all`,
         method: "GET",
       }),
       providesTags: ["Category"],

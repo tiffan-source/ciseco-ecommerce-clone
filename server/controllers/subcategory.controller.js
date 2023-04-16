@@ -36,7 +36,7 @@ exports.displaySubcategories = async (req, res, next) => {
       count: result.length,
       description: "Successfully fetch all subcategory credentials",
       count: result.count,
-      data: result.categories,
+      data: result.subcategories,
     });
   } catch (error) {
     next(error);
