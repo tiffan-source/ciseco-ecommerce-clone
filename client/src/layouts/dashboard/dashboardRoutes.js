@@ -2,16 +2,6 @@ const iconStyle = "lg:h-4 md:h-10 h-8 lg:w-4 md:w-10 w-8 lg:mx-0 md:mx-auto";
 
 const dashboardRoutes = [
   {
-    icon: <Product className={iconStyle} />,
-    name: "Add New Product",
-    anchor: "add-new-product",
-  },
-  {
-    icon: <List className={iconStyle} />,
-    name: "List Product",
-    anchor: "list-product",
-  },
-  {
     icon: <Category className={iconStyle} />,
     name: "Add New Category",
     anchor: "add-new-category",
@@ -30,6 +20,16 @@ const dashboardRoutes = [
     icon: <List className={iconStyle} />,
     name: "List Subcategory",
     anchor: "list-subcategory",
+  },
+  {
+    icon: <Product className={iconStyle} />,
+    name: "Add New Product",
+    anchor: "add-new-product",
+  },
+  {
+    icon: <List className={iconStyle} />,
+    name: "List Product",
+    anchor: "list-product",
   },
 ];
 
