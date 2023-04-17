@@ -354,7 +354,7 @@ const AddNewProduct = () => {
                   <span className="text-red-500 font-medium">
                     store field is required!
                   </span>
-                ) : displayingBrands ? (
+                ) : displayingStores ? (
                   <span className="flex">
                     <div role="status">
                       <svg
