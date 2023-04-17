@@ -23,6 +23,8 @@ const ListSubcategory = () => {
   const subcategories = subcategoriesData?.data || [];
   const count = subcategoriesData?.count || 0;
 
+  console.log(subcategories);
+
   return (
     <>
       {displayingSubcategories ? (
@@ -75,7 +77,7 @@ const ListSubcategory = () => {
                   </thead>
                   <tbody>
                     {subcategories.map(
-                      ({ _id, thumbnail, title, createdAt, updatedAt }) => (
+                      ({ _id, thumbnail, title, category, createdAt, updatedAt }) => (
                         <tr
                           key={_id}
                           className="odd:bg-white even:bg-gray-100 hover:odd:bg-gray-100"
@@ -95,7 +97,7 @@ const ListSubcategory = () => {
                             {title}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                            N/A
+                            {category?.title}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                             {createdAt
@@ -118,7 +120,7 @@ const ListSubcategory = () => {
                               <>
                                 <Link
                                   className="text-green-500 hover:text-green-700"
-                                  to={`/dashboard/update-category/${_id}`}
+                                  to={`/dashboard/update-subcategory/${_id}`}
                                 >
                                   Update
                                 </Link>

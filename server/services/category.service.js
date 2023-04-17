@@ -19,7 +19,11 @@ exports.displayCategories = async ({ page, limit }) => {
   const result = await Category.find({})
     .skip((Number(page) - 1) * limit)
     .limit(limit)
-    .sort("-updatedAt");
+    .sort("-updatedAt")
+    .populate({
+      path: "subcategories",
+      select: "title",
+    });
 
   const count = await Category.estimatedDocumentCount();
   return { categories: result, count };

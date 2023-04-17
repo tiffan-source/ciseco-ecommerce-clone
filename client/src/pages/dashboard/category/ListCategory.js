@@ -75,7 +75,7 @@ const ListCategory = () => {
                   </thead>
                   <tbody>
                     {categories.map(
-                      ({ _id, thumbnail, title, createdAt, updatedAt }) => (
+                      ({ _id, thumbnail, title, subcategories, createdAt, updatedAt }) => (
                         <tr
                           key={_id}
                           className="odd:bg-white even:bg-gray-100 hover:odd:bg-gray-100"
@@ -95,7 +95,7 @@ const ListCategory = () => {
                             {title}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                            N/A
+                            {subcategories?.length}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                             {createdAt
