@@ -46,39 +46,37 @@ const BuyingSteps = () => {
   ];
 
   return (
-    <section className="lg:px-32">
-      <div className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-16 xl:gap-20">
-        <img
-          className="hidden md:block absolute inset-x-0 top-5"
-          src="/assets/steps/step-bg.svg"
-          alt="vector"
-        />
-        {steps.map((step, index) => (
+    <div className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-16 xl:gap-20">
+      <img
+        className="hidden md:block absolute inset-x-0 top-5"
+        src="/assets/steps/step-bg.svg"
+        alt="vector"
+      />
+      {steps.map((step, index) => (
+        <div
+          key={index}
+          className="relative flex flex-col items-center max-w-xs mx-auto"
+        >
           <div
-            key={index}
-            className="relative flex flex-col items-center max-w-xs mx-auto"
+            className="nc-NcImage mb-4 sm:mb-10 max-w-[140px] mx-auto"
+            data-nc-id="NcImage"
           >
-            <div
-              className="nc-NcImage mb-4 sm:mb-10 max-w-[140px] mx-auto"
-              data-nc-id="NcImage"
-            >
-              <LazyLoadingImage
-                src={step.thumbnail}
-                className="rounded-3xl"
-                alt={step.title}
-              />
-            </div>
-            <div className="text-center mt-auto space-y-5">
-              {step.badge}
-              <h3 className="text-base font-semibold">{step.title}</h3>
-              <span className="block text-slate-600 dark:text-slate-400 text-sm leading-6">
-                {step.description}
-              </span>
-            </div>
+            <LazyLoadingImage
+              src={step.thumbnail}
+              className="rounded-3xl"
+              alt={step.title}
+            />
           </div>
-        ))}
-      </div>
-    </section>
+          <div className="text-center mt-auto space-y-5">
+            {step.badge}
+            <h3 className="text-base font-semibold">{step.title}</h3>
+            <span className="block text-slate-600 dark:text-slate-400 text-sm leading-6">
+              {step.description}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 };
 
