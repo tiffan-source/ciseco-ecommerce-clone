@@ -7,6 +7,7 @@ import DashboardLoading from "../../../components/loading/DashboardLoading";
 import LazyLoadingImage from "../../../components/LazyLoadingImage";
 import DashboardInlineLoading from "../../../components/loading/DashboardInlineLoading";
 import { Link } from "react-router-dom";
+import TableWarning from "../../../components/dashboard/TableWarning";
 
 const ListCategory = () => {
   const [page, setPage] = useState(1);
@@ -27,7 +28,7 @@ const ListCategory = () => {
     <>
       {displayingCategories ? (
         <DashboardLoading />
-      ) : (
+      ) : categories?.length ? (
         <div className="flex flex-col">
           <div className="-m-1.5 overflow-x-auto">
             <div className="p-1.5 min-w-full inline-block align-middle">
@@ -75,7 +76,14 @@ const ListCategory = () => {
                   </thead>
                   <tbody>
                     {categories.map(
-                      ({ _id, thumbnail, title, subcategories, createdAt, updatedAt }) => (
+                      ({
+                        _id,
+                        thumbnail,
+                        title,
+                        subcategories,
+                        createdAt,
+                        updatedAt,
+                      }) => (
                         <tr
                           key={_id}
                           className="odd:bg-white even:bg-gray-100 hover:odd:bg-gray-100"
@@ -195,6 +203,8 @@ const ListCategory = () => {
             </button>
           </div>
         </div>
+      ) : (
+        <TableWarning title={"category"} />
       )}
     </>
   );

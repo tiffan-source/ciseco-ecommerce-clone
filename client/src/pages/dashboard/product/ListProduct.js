@@ -7,6 +7,7 @@ import LazyLoadingImage from "../../../components/LazyLoadingImage";
 import { Link } from "react-router-dom";
 import DashboardLoading from "../../../components/loading/DashboardLoading";
 import DashboardInlineLoading from "../../../components/loading/DashboardInlineLoading";
+import TableWarning from "../../../components/dashboard/TableWarning";
 
 const ListProduct = () => {
   const [page, setPage] = useState(1);
@@ -27,7 +28,7 @@ const ListProduct = () => {
     <>
       {displayingProducts ? (
         <DashboardLoading />
-      ) : (
+      ) : products?.length ? (
         <div className="flex flex-col">
           <div className="-m-1.5 overflow-x-auto">
             <div className="p-1.5 min-w-full inline-block align-middle">
@@ -217,6 +218,8 @@ const ListProduct = () => {
             </button>
           </div>
         </div>
+      ) : (
+        <TableWarning title={"product"} />
       )}
     </>
   );

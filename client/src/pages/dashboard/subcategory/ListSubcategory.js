@@ -7,6 +7,7 @@ import DashboardLoading from "../../../components/loading/DashboardLoading";
 import LazyLoadingImage from "../../../components/LazyLoadingImage";
 import DashboardInlineLoading from "../../../components/loading/DashboardInlineLoading";
 import { Link } from "react-router-dom";
+import TableWarning from "../../../components/dashboard/TableWarning";
 
 const ListSubcategory = () => {
   const [page, setPage] = useState(1);
@@ -27,7 +28,7 @@ const ListSubcategory = () => {
     <>
       {displayingSubcategories ? (
         <DashboardLoading />
-      ) : (
+      ) : subcategories?.length ? (
         <div className="flex flex-col">
           <div className="-m-1.5 overflow-x-auto">
             <div className="p-1.5 min-w-full inline-block align-middle">
@@ -75,7 +76,14 @@ const ListSubcategory = () => {
                   </thead>
                   <tbody>
                     {subcategories.map(
-                      ({ _id, thumbnail, title, category, createdAt, updatedAt }) => (
+                      ({
+                        _id,
+                        thumbnail,
+                        title,
+                        category,
+                        createdAt,
+                        updatedAt,
+                      }) => (
                         <tr
                           key={_id}
                           className="odd:bg-white even:bg-gray-100 hover:odd:bg-gray-100"
@@ -95,7 +103,7 @@ const ListSubcategory = () => {
                             {title}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                            {category?.title}
+                            {category?.title || "N/A"}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                             {createdAt
@@ -195,6 +203,8 @@ const ListSubcategory = () => {
             </button>
           </div>
         </div>
+      ) : (
+        <TableWarning title={"subcategory"} />
       )}
     </>
   );
