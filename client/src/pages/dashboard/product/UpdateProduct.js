@@ -11,6 +11,9 @@ import {
   useUpdatePhotoMutation,
 } from "../../../features/update/updateApi";
 import DashboardLoading from "../../../components/loading/DashboardLoading";
+import { useDisplaySubcategoriesQuery } from "../../../features/subcategory/subcategoryApi";
+import { useDisplayBrandsQuery } from "../../../features/brand/brandApi";
+import { useDisplayStoresQuery } from "../../../features/store/storeApi";
 
 const UpdateProduct = () => {
   const { pid } = useParams();
@@ -58,6 +61,16 @@ const UpdateProduct = () => {
     useUpdatePhotoMutation();
   const [updateGallery, { isLoading: galleryUploading }] =
     useUpdateGalleryMutation();
+  const { data: subcategoriesData, isLoading: displayingSubcategories } =
+    useDisplaySubcategoriesQuery({ page: 0, limit: 0 });
+  const { data: brandsData, isLoading: displayingBrands } =
+    useDisplayBrandsQuery({ page: 0, limit: 0 });
+  const { data: storeData, isLoading: displayingStores } =
+    useDisplayStoresQuery({ page: 0, limit: 0 });
+
+  const subcategories = subcategoriesData?.data || [];
+  const brands = brandsData?.data || [];
+  const stores = storeData?.data || [];
 
   // upload credentials from state
   const { photo, gallery: productGallery } = useSelector(
@@ -99,9 +112,6 @@ const UpdateProduct = () => {
   // submit add product form
   const handleAddProductForm = (data) => {
     data.tags = productTags.length ? productTags : tags;
-    data.brand = undefined;
-    data.subcategory = undefined;
-    data.store = undefined;
     data.thumbnail = Object.keys(photo)?.length ? photo : thumbnail;
     data.gallery = Object.keys(productGallery)?.length
       ? productGallery
@@ -109,6 +119,7 @@ const UpdateProduct = () => {
 
     const { productTags: _, ...productData } = data;
     updateProduct({ pid: pid, productData });
+    console.log(productData);
   };
 
   return (
@@ -335,7 +346,30 @@ const UpdateProduct = () => {
                     >
                       {errors.subcategory ? (
                         <span className="text-red-500 font-medium">
-                          Subcategory field is required!
+                          subcategory field is required!
+                        </span>
+                      ) : displayingSubcategories ? (
+                        <span className="flex">
+                          <div role="status">
+                            <svg
+                              aria-hidden="true"
+                              className="w-5 h-5 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                              viewBox="0 0 100 101"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                                fill="currentColor"
+                              />
+                              <path
+                                d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                                fill="currentFill"
+                              />
+                            </svg>
+                            <span className="sr-only">Loading...</span>
+                          </div>
+                          Category fetching
                         </span>
                       ) : (
                         "Subcategory"
@@ -345,12 +379,18 @@ const UpdateProduct = () => {
                       <select
                         id="subcategory"
                         name="subcategory"
-                        {...register("subcategory", {})}
+                        {...register("subcategory", { required: true })}
                         className="w-full form-select rounded-md"
                       >
-                        <option value="subcategory1">Subcategory1</option>
-                        <option value="subcategory2">Subcategory2</option>
-                        <option value="subcategory3">Subcategory3</option>
+                        {subcategories.map((sc) => (
+                          <option
+                            key={sc?._id}
+                            value={sc?._id}
+                            selected={sc?._id === subcategory}
+                          >
+                            {sc?.title}
+                          </option>
+                        ))}
                       </select>
                     </div>
                   </div>
@@ -363,7 +403,30 @@ const UpdateProduct = () => {
                     >
                       {errors.brand ? (
                         <span className="text-red-500 font-medium">
-                          Brand field is required!
+                          brand field is required!
+                        </span>
+                      ) : displayingBrands ? (
+                        <span className="flex">
+                          <div role="status">
+                            <svg
+                              aria-hidden="true"
+                              className="w-5 h-5 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                              viewBox="0 0 100 101"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                                fill="currentColor"
+                              />
+                              <path
+                                d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                                fill="currentFill"
+                              />
+                            </svg>
+                            <span className="sr-only">Loading...</span>
+                          </div>
+                          Brand fetching
                         </span>
                       ) : (
                         "Brand"
@@ -373,12 +436,18 @@ const UpdateProduct = () => {
                       <select
                         id="brand"
                         name="brand"
-                        {...register("brand", {})}
+                        {...register("brand", { required: true })}
                         className="w-full form-select rounded-md"
                       >
-                        <option value="brand1">Brand1</option>
-                        <option value="brand2">Brand2</option>
-                        <option value="brand3">Brand3</option>
+                        {brands.map((br) => (
+                          <option
+                            key={br?._id}
+                            value={br?._id}
+                            selected={br?._id === brand}
+                          >
+                            {br?.title}
+                          </option>
+                        ))}
                       </select>
                     </div>
                   </div>
@@ -391,7 +460,30 @@ const UpdateProduct = () => {
                     >
                       {errors.store ? (
                         <span className="text-red-500 font-medium">
-                          Store field is required!
+                          store field is required!
+                        </span>
+                      ) : displayingStores ? (
+                        <span className="flex">
+                          <div role="status">
+                            <svg
+                              aria-hidden="true"
+                              className="w-5 h-5 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                              viewBox="0 0 100 101"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                                fill="currentColor"
+                              />
+                              <path
+                                d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                                fill="currentFill"
+                              />
+                            </svg>
+                            <span className="sr-only">Loading...</span>
+                          </div>
+                          Store fetching
                         </span>
                       ) : (
                         "Store"
@@ -401,12 +493,18 @@ const UpdateProduct = () => {
                       <select
                         id="store"
                         name="store"
-                        {...register("store", {})}
+                        {...register("store", { required: true })}
                         className="w-full form-select rounded-md"
                       >
-                        <option value="store1">Store1</option>
-                        <option value="store2">Store2</option>
-                        <option value="store3">Store3</option>
+                        {stores.map((st) => (
+                          <option
+                            key={st?._id}
+                            value={st?._id}
+                            selected={st?._id === store}
+                          >
+                            {st?.title}
+                          </option>
+                        ))}
                       </select>
                     </div>
                   </div>
