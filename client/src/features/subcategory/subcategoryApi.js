@@ -1,7 +1,7 @@
 import apiSlice from "../api/apiSlice";
 
 const subcategoryApi = apiSlice.injectEndpoints({
-  endpoints: (builder) => ({
+  endpoints: (builder) => ({  
     // add new subcategory
     createSubcategory: builder.mutation({
       query: (data) => ({
