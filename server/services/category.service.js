@@ -7,6 +7,7 @@
 
 /* internal import */
 const Category = require("../models/category.model");
+const Subcategory = require("../models/subcategory.model");
 const remove = require("../utils/remove.util");
 
 /* insert new category */
@@ -46,6 +47,13 @@ exports.updateCategory = async (id, data) => {
 exports.removeCategory = async ({ id }) => {
   const result = await Category.findByIdAndDelete(id);
   await remove(result.thumbnail.public_id);
+
+  // remove from subcategory
+  result.subcategories.forEach(async (subcategory) => {
+    await Subcategory.findByIdAndUpdate(subcategory, {
+      $unset: { category: result._id },
+    });
+  });
 
   return result;
 };
