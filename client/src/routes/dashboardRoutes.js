@@ -14,6 +14,9 @@ import UpdateSubcategory from "../pages/dashboard/subcategory/UpdateSubcategory"
 import AddNewBrand from "../pages/dashboard/brand/AddNewBrand";
 import ListBrand from "../pages/dashboard/brand/ListBrand";
 import UpdateBrand from "../pages/dashboard/brand/UpdateBrand";
+import AddNewStore from "../pages/dashboard/store/AddNewStore";
+import ListStore from "../pages/dashboard/store/ListStore";
+import UpdateStore from "../pages/dashboard/store/UpdateStore";
 
 const dashboardRoutes = {
   path: "/dashboard",
@@ -76,6 +79,18 @@ const dashboardRoutes = {
     {
       path: "update-brand/:bid",
       element: <SplitRouter>{<UpdateBrand />}</SplitRouter>,
+    },
+    {
+      path: "add-new-store",
+      element: <SplitRouter>{<AddNewStore />}</SplitRouter>,
+    },
+    {
+      path: "list-store",
+      element: <SplitRouter>{<ListStore />}</SplitRouter>,
+    },
+    {
+      path: "update-store/:sid",
+      element: <SplitRouter>{<UpdateStore />}</SplitRouter>,
     },
   ],
 };
