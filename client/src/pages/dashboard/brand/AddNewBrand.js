@@ -326,7 +326,7 @@ const AddNewBrand = () => {
                       autoComplete="off"
                       placeholder="Enter your brand logo"
                       {...register("logo", {
-                        required: false,
+                        required: true,
                       })}
                       className={`w-full form-input rounded-md`}
                       onChange={(event) => {
