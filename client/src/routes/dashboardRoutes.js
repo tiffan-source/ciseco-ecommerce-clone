@@ -11,6 +11,9 @@ import UpdateCategory from "../pages/dashboard/category/UpdateCategory";
 import AddNewSubcategory from "../pages/dashboard/subcategory/AddNewSubcategory";
 import ListSubcategory from "../pages/dashboard/subcategory/ListSubcategory";
 import UpdateSubcategory from "../pages/dashboard/subcategory/UpdateSubcategory";
+import AddNewBrand from "../pages/dashboard/brand/AddNewBrand";
+import ListBrand from "../pages/dashboard/brand/ListBrand";
+import UpdateBrand from "../pages/dashboard/brand/UpdateBrand";
 
 const dashboardRoutes = {
   path: "/dashboard",
@@ -59,8 +62,20 @@ const dashboardRoutes = {
       element: <SplitRouter>{<ListSubcategory />}</SplitRouter>,
     },
     {
-      path: "update-subcategory/:sid",
+      path: "update-subcategory/:scid",
       element: <SplitRouter>{<UpdateSubcategory />}</SplitRouter>,
+    },
+    {
+      path: "add-new-brand",
+      element: <SplitRouter>{<AddNewBrand />}</SplitRouter>,
+    },
+    {
+      path: "list-brand",
+      element: <SplitRouter>{<ListBrand />}</SplitRouter>,
+    },
+    {
+      path: "update-brand/:bid",
+      element: <SplitRouter>{<UpdateBrand />}</SplitRouter>,
     },
   ],
 };
