@@ -40,7 +40,21 @@ exports.displayProducts = async ({ page, limit }) => {
   const result = await Product.find({})
     .skip((Number(page) - 1) * limit)
     .limit(limit)
-    .sort("-updatedAt");
+    .sort("-updatedAt")
+    .populate([
+      {
+        path: "subcategory",
+        select: "title",
+      },
+      {
+        path: "brand",
+        select: "title",
+      },
+      {
+        path: "store",
+        select: "title",
+      },
+    ]);
 
   const count = await Product.estimatedDocumentCount();
   return { products: result, count };
