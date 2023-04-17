@@ -1,7 +1,9 @@
-import React from "react";
+import React from 'react';
 
 const UpdateSubcategory = () => {
-  return <>This is UpdateSubcategory</>;
-};
+    return (
+        <>This is UpdateSubcategory</>
+    );
+}
 
 export default UpdateSubcategory;

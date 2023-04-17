@@ -23,8 +23,6 @@ const ListSubcategory = () => {
   const subcategories = subcategoriesData?.data || [];
   const count = subcategoriesData?.count || 0;
 
-  console.log(subcategories);
-
   return (
     <>
       {displayingSubcategories ? (
