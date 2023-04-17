@@ -23,7 +23,10 @@ exports.displayStores = async ({ page, limit }) => {
   const result = await Store.find({})
     .skip((Number(page) - 1) * limit)
     .limit(limit)
-    .sort("-updatedAt");
+    .sort("-updatedAt").populate({
+      path: "seller",
+      select: "name",
+    });
 
   const count = await Store.estimatedDocumentCount();
   return { stores: result, count };
