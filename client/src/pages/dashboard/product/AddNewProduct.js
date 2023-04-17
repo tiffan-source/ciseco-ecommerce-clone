@@ -48,8 +48,6 @@ const AddNewProduct = () => {
   // submit add product form
   const handleAddProductForm = (data) => {
     data.tags = tags;
-    data.brand = undefined;
-    data.store = undefined;
     data.thumbnail = photo;
     data.gallery = gallery;
     createProduct(data);
