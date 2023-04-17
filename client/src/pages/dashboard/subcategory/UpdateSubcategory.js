@@ -61,7 +61,7 @@ const UpdateSubcategory = () => {
   }, [reset, title, description, category, tags, thumbnail]);
 
   // submit add category form
-  const handleAddCategoryForm = (data) => {
+  const handleAddSubcategoryForm = (data) => {
     data.tags = subcategoryTags.length ? subcategoryTags : tags;
     data.thumbnail = Object.keys(photo)?.length ? photo : thumbnail;
 
@@ -100,7 +100,7 @@ const UpdateSubcategory = () => {
             {/* subcategory form */}
             <form
               className="md:col-span-7 col-span-12"
-              onSubmit={handleSubmit(handleAddCategoryForm)}
+              onSubmit={handleSubmit(handleAddSubcategoryForm)}
             >
               <div className="grid grid-cols-1 gap-y-4">
                 <div className="grid grid-cols-1 gap-y-8 bg-white p-4 rounded-md">
