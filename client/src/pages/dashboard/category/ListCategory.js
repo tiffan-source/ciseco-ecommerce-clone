@@ -103,7 +103,20 @@ const ListCategory = () => {
                             {title}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                            {subcategories?.length}
+                            <select
+                              id="gender"
+                              name="gender"
+                              className="form-select rounded-md"
+                            >
+                              {subcategories?.map((subcategory) => (
+                                <option
+                                  key={subcategory?._id}
+                                  value={subcategory?._id}
+                                >
+                                  {subcategory?.title}
+                                </option>
+                              ))}
+                            </select>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                             {createdAt

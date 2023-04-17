@@ -11,7 +11,7 @@ import DashboardLoading from "../../../components/loading/DashboardLoading";
 
 const UpdateCategory = () => {
   const { cid } = useParams();
-  const { data: displayCategory, isLoading: displayingCategorys } =
+  const { data: displayCategory, isLoading: displayingCategories } =
     useDisplayCategoryQuery(cid);
   const navigate = useNavigate();
 
@@ -72,7 +72,7 @@ const UpdateCategory = () => {
 
   return (
     <>
-      {displayingCategorys ? (
+      {displayingCategories ? (
         <DashboardLoading />
       ) : (
         <>
