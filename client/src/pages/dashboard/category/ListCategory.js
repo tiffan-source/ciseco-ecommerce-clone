@@ -103,7 +103,7 @@ const ListCategory = () => {
                             {title}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                            <select
+                            {subcategories?.length ? <select
                               id="gender"
                               name="gender"
                               className="form-select rounded-md"
@@ -116,7 +116,7 @@ const ListCategory = () => {
                                   {subcategory?.title}
                                 </option>
                               ))}
-                            </select>
+                            </select> : "N/A"}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                             {createdAt
