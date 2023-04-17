@@ -10,9 +10,9 @@ import { useSelector } from "react-redux";
 import DashboardLoading from "../../../components/loading/DashboardLoading";
 
 const UpdateSubcategory = () => {
-  const { sid } = useParams();
+  const { scid } = useParams();
   const { data: displaySubcategory, isLoading: displayingSubcategories } =
-    useDisplaySubcategoryQuery(sid);
+    useDisplaySubcategoryQuery(scid);
   const navigate = useNavigate();
 
   const { title, description, category, tags, thumbnail } =
@@ -66,7 +66,7 @@ const UpdateSubcategory = () => {
     data.thumbnail = Object.keys(photo)?.length ? photo : thumbnail;
 
     const { subcategoryTags: _, ...subcategoryData } = data;
-    updateCategory({ sid, subcategoryData });
+    updateCategory({ sid: scid, subcategoryData });
   };
 
   return (
