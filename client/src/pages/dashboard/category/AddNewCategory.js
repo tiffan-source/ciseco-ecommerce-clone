@@ -187,36 +187,6 @@ const AddNewCategory = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-y-8 bg-white p-4 rounded-md">
-            {/* subcategory */}
-            <div>
-              <label
-                htmlFor="subcategory"
-                className="block text-sm font-medium text-gray-700"
-              >
-                {errors.subcategory ? (
-                  <span className="text-red-500 font-medium">
-                    Subcategory field is required!
-                  </span>
-                ) : (
-                  "Subcategory"
-                )}
-              </label>
-              <div className="mt-1">
-                <select
-                  id="subcategory"
-                  name="subcategory"
-                  {...register("subcategory", { required: true })}
-                  className="w-full form-select rounded-md"
-                >
-                  <option value="subcategory1">Subcategory1</option>
-                  <option value="subcategory2">Subcategory2</option>
-                  <option value="subcategory3">Subcategory3</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
           {/* category thumbnail */}
           <div className="grid grid-cols-1 gap-y-8 bg-white p-4 rounded-md">
             {/* category thumbnail */}
