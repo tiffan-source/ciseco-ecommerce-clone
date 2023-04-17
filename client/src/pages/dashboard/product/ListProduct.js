@@ -88,7 +88,16 @@ const ListProduct = () => {
                   </thead>
                   <tbody>
                     {products.map(
-                      ({ _id, thumbnail, title, price, gallery }) => (
+                      ({
+                        _id,
+                        thumbnail,
+                        title,
+                        subcategory,
+                        brand,
+                        store,
+                        price,
+                        gallery,
+                      }) => (
                         <tr
                           key={_id}
                           className="odd:bg-white even:bg-gray-100 hover:odd:bg-gray-100"
@@ -126,13 +135,13 @@ const ListProduct = () => {
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                            N/A
+                            {subcategory?.title}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                            N/A
+                            {brand?.title}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                            N/A
+                            {store?.title}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             {removingProduct ? (
