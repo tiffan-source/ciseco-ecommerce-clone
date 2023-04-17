@@ -63,7 +63,7 @@ exports.removeSubcategory = async ({ id }) => {
 
   // remove from category
   await Category.findByIdAndUpdate(result.category, {
-    $unset: { subcategories: result._id },
+    $pull: { subcategories: result._id },
   });
 
   return result;
