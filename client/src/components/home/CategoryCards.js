@@ -75,7 +75,7 @@ const CategoryCards = ({ categories }) => {
             </div>
           </div>
           <Link
-            to={`/category/${title}/${_id}`}
+            to={`/category/${title.toLowerCase()}/${_id}`}
             className="absolute inset-0"
           ></Link>
         </div>

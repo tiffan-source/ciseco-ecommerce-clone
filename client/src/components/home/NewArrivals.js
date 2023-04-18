@@ -58,14 +58,14 @@ const NewArrivals = ({ products, loading, type }) => {
                     >
                       <Link
                         className="absolute inset-0"
-                        to={`/${title
+                        to={`/product/${title
                           .toLowerCase()
                           .replace(/\s/g, "-")}/${_id}`}
                       ></Link>
                       <div className="relative flex-shrink-0 bg-slate-50 rounded-3xl overflow-hidden z-1 group">
                         <Link
                           className="block"
-                          to={`/${title
+                          to={`/product/${title
                             .toLowerCase()
                             .replace(/\s/g, "-")}/${_id}`}
                         >
@@ -148,42 +148,6 @@ const NewArrivals = ({ products, loading, type }) => {
                   </Carousel.Slide>
                 )
               )}
-              {/* <Carousel.Slide>
-                <div className="relative rounded-2xl overflow-hidden h-[410px]">
-                  <div className="h-[410px] bg-black/5"></div>
-                  <div className="absolute inset-y-6 inset-x-10  flex flex-col items-center justify-center">
-                    <Link to="/products/all" className="flex items-center justify-center relative">
-                      <span className="text-xl font-semibold text-black">
-                        More items
-                      </span>
-                      <svg
-                        className="absolute left-full w-5 h-5 ml-2 rotate-45 group-hover:scale-110 transition-transform text-black"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M18.0701 9.57L12.0001 3.5L5.93005 9.57"
-                          stroke="currentColor"
-                          stroke-width="1.5"
-                          stroke-miterlimit="10"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        ></path>
-                        <path
-                          d="M12 20.4999V3.66992"
-                          stroke="currentColor"
-                          stroke-width="1.5"
-                          stroke-miterlimit="10"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        ></path>
-                      </svg>
-                    </Link>
-                    <span className="text-sm mt-1 text-black">Show me more</span>
-                  </div>
-                </div>
-              </Carousel.Slide> */}
             </Carousel.Component>
           </div>
         </div>
