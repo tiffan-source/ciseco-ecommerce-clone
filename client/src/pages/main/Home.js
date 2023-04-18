@@ -5,6 +5,7 @@ import NewArrivals from "../../components/home/NewArrivals";
 import { useDisplayProductsQuery } from "../../features/product/productApi";
 import KidsProduct from "../../components/home/KidsProduct";
 import ExpertChoice from "../../components/home/ExpertChoice";
+import StartExploring from "../../components/home/StartExploring";
 
 const Home = () => {
   const { data: productData, isLoading } = useDisplayProductsQuery({
@@ -30,6 +31,7 @@ const Home = () => {
           loading={isLoading}
           type={"slide"}
         />
+        <StartExploring />
       </div>
     </section>
   );
