@@ -6,6 +6,7 @@ import { useDisplayProductsQuery } from "../../features/product/productApi";
 import KidsProduct from "../../components/home/KidsProduct";
 import ExpertChoice from "../../components/home/ExpertChoice";
 import StartExploring from "../../components/home/StartExploring";
+import TrendingNow from "../../components/home/TrendingNow";
 
 const Home = () => {
   const { data: productData, isLoading } = useDisplayProductsQuery({
@@ -14,6 +15,7 @@ const Home = () => {
   });
 
   const products = productData?.data || [];
+  console.log(products);
 
   return (
     <section className="container mx-auto flex flex-col gap-y-32 px-4">
@@ -21,7 +23,7 @@ const Home = () => {
       <div className="lg:px-32 flex flex-col gap-y-32">
         <BuyingSteps />
         <NewArrivals
-          products={products}
+          products={products.slice(0, 5)}
           loading={isLoading}
           type={"carousel"}
         />
@@ -32,6 +34,7 @@ const Home = () => {
           type={"slide"}
         />
         <StartExploring />
+        <TrendingNow products={products} loading={isLoading} />
       </div>
     </section>
   );

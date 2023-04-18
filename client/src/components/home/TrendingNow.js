@@ -1,0 +1,30 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import LazyLoadingImage from "../LazyLoadingImage";
+import ProductCard from "./ProductCard";
+
+const TrendingNow = ({ products, loading }) => {
+  return (
+    <>
+      <section>
+        <div class="nc-Section-Heading relative flex flex-col sm:flex-row sm:items-end justify-between mb-10 md:mb-12 text-neutral-900">
+          <div class="max-w-2xl">
+            <h2 class="text-3xl md:text-4xl font-semibold">
+              What's trending now
+            </h2>
+            <span class="mt-2 md:mt-4 font-normal block text-base sm:text-lg text-neutral-500">
+              Discover the most trending products in Ciseco.
+            </span>
+          </div>
+        </div>
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-8">
+          {products?.map((product) => (
+            <ProductCard product={product} />
+          ))}
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default TrendingNow;

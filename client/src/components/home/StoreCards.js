@@ -73,7 +73,7 @@ const StoreCards = ({ stores }) => {
             </div>
           </div>
           <Link
-            to={`/category/${title}/${_id}`}
+            to={`/store/${title}/${_id}`}
             className="absolute inset-0"
           ></Link>
         </div>
