@@ -31,8 +31,8 @@ const NewArrivals = () => {
   return (
     <>
       <div className="flex flex-col gap-y-8">
-        <h2 class=" text-3xl md:text-4xl font-semibold">
-          New Arrivals<span class="">. </span>
+        <h2 className=" text-3xl md:text-4xl font-semibold">
+          New Arrivals<span className="">. </span>
           <GrayText>New Sports equipment</GrayText>
         </h2>
         <div>

@@ -14,8 +14,8 @@ const NewArrivals = ({ products, loading, type }) => {
       ) : products?.length ? (
         <div className="flex flex-col gap-y-8 !relative">
           <div className="lg:mb-8 mb-6">
-            <h2 class=" text-3xl md:text-4xl font-semibold">
-              New Arrivals<span class="">. </span>
+            <h2 className=" text-3xl md:text-4xl font-semibold">
+              New Arrivals<span className="">. </span>
               <GrayText>New Sports equipment</GrayText>
             </h2>
           </div>
@@ -53,24 +53,24 @@ const NewArrivals = ({ products, loading, type }) => {
                 }) => (
                   <Carousel.Slide key={_id}>
                     <div
-                      class="relative flex flex-col bg-transparent"
+                      className="relative flex flex-col bg-transparent"
                       data-nc-id="ProductCard"
                     >
                       <Link
-                        class="absolute inset-0"
+                        className="absolute inset-0"
                         to={`/${title
                           .toLowerCase()
                           .replace(/\s/g, "-")}/${_id}`}
                       ></Link>
-                      <div class="relative flex-shrink-0 bg-slate-50 rounded-3xl overflow-hidden z-1 group">
+                      <div className="relative flex-shrink-0 bg-slate-50 rounded-3xl overflow-hidden z-1 group">
                         <Link
-                          class="block"
+                          className="block"
                           to={`/${title
                             .toLowerCase()
                             .replace(/\s/g, "-")}/${_id}`}
                         >
                           <div
-                            class="nc-NcImage flex aspect-w-11 aspect-h-12 w-full h-0"
+                            className="nc-NcImage flex aspect-w-11 aspect-h-12 w-full h-0"
                             data-nc-id="NcImage"
                           >
                             <LazyLoadingImage
@@ -82,7 +82,7 @@ const NewArrivals = ({ products, loading, type }) => {
                             />
                           </div>
                         </Link>
-                        <div class="nc-shadow-lg rounded-full flex items-center justify-center absolute top-3 left-3 px-2.5 py-1.5 text-xs bg-white text-slate-700">
+                        <div className="nc-shadow-lg rounded-full flex items-center justify-center absolute top-3 left-3 px-2.5 py-1.5 text-xs bg-white text-slate-700">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -90,7 +90,7 @@ const NewArrivals = ({ products, loading, type }) => {
                             stroke-width="1.5"
                             stroke="currentColor"
                             aria-hidden="true"
-                            class="w-3.5 h-3.5"
+                            className="w-3.5 h-3.5"
                           >
                             <path
                               stroke-linecap="round"
@@ -98,39 +98,39 @@ const NewArrivals = ({ products, loading, type }) => {
                               d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"
                             ></path>
                           </svg>
-                          <span class="ml-1 leading-none">
+                          <span className="ml-1 leading-none">
                             {subcategory.title}
                           </span>
                         </div>
                       </div>
-                      <div class="space-y-4 px-2.5 pt-5 pb-2.5">
+                      <div className="space-y-4 px-2.5 pt-5 pb-2.5">
                         <div>
                           <h2
-                            class="text-base font-semibold text-black line-clamp-1"
+                            className="text-base font-semibold text-black line-clamp-1"
                             title={title}
                           >
                             <title>{title}</title>
                             {title}
                           </h2>
-                          <p class="text-sm font-normal text-slate-500 mt-1 line-clamp-2">
+                          <p className="text-sm font-normal text-slate-500 mt-1 line-clamp-2">
                             {description}
                           </p>
                         </div>
-                        <div class="flex justify-between items-end">
-                          <div class="">
-                            <div class="flex items-center border-2 border-green-500 rounded-lg py-1 px-2 md:py-1.5 md:px-2.5 text-sm font-medium">
-                              <span class="text-green-500 !leading-none">
+                        <div className="flex justify-between items-end">
+                          <div className="">
+                            <div className="flex items-center border-2 border-green-500 rounded-lg py-1 px-2 md:py-1.5 md:px-2.5 text-sm font-medium">
+                              <span className="text-green-500 !leading-none">
                                 ৳{price}
                               </span>
                             </div>
                           </div>
-                          <div class="flex items-center mb-0.5">
+                          <div className="flex items-center mb-0.5">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 24 24"
                               fill="currentColor"
                               aria-hidden="true"
-                              class="w-5 h-5 pb-[1px] text-amber-400"
+                              className="w-5 h-5 pb-[1px] text-amber-400"
                             >
                               <path
                                 fill-rule="evenodd"
@@ -138,7 +138,7 @@ const NewArrivals = ({ products, loading, type }) => {
                                 clip-rule="evenodd"
                               ></path>
                             </svg>
-                            <span class="text-sm ml-1 text-slate-500">
+                            <span className="text-sm ml-1 text-slate-500">
                               N/A ({review?.length} reviews)
                             </span>
                           </div>
@@ -149,15 +149,15 @@ const NewArrivals = ({ products, loading, type }) => {
                 )
               )}
               {/* <Carousel.Slide>
-                <div class="relative rounded-2xl overflow-hidden h-[410px]">
-                  <div class="h-[410px] bg-black/5"></div>
-                  <div class="absolute inset-y-6 inset-x-10  flex flex-col items-center justify-center">
-                    <Link to="/products/all" class="flex items-center justify-center relative">
-                      <span class="text-xl font-semibold text-black">
+                <div className="relative rounded-2xl overflow-hidden h-[410px]">
+                  <div className="h-[410px] bg-black/5"></div>
+                  <div className="absolute inset-y-6 inset-x-10  flex flex-col items-center justify-center">
+                    <Link to="/products/all" className="flex items-center justify-center relative">
+                      <span className="text-xl font-semibold text-black">
                         More items
                       </span>
                       <svg
-                        class="absolute left-full w-5 h-5 ml-2 rotate-45 group-hover:scale-110 transition-transform text-black"
+                        className="absolute left-full w-5 h-5 ml-2 rotate-45 group-hover:scale-110 transition-transform text-black"
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -180,7 +180,7 @@ const NewArrivals = ({ products, loading, type }) => {
                         ></path>
                       </svg>
                     </Link>
-                    <span class="text-sm mt-1 text-black">Show me more</span>
+                    <span className="text-sm mt-1 text-black">Show me more</span>
                   </div>
                 </div>
               </Carousel.Slide> */}
@@ -189,12 +189,12 @@ const NewArrivals = ({ products, loading, type }) => {
         </div>
       ) : (
         <div
-          class="flex p-4 mb-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300 dark:border-yellow-800"
+          className="flex p-4 mb-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300 dark:border-yellow-800"
           role="alert"
         >
           <svg
             aria-hidden="true"
-            class="flex-shrink-0 inline w-5 h-5 mr-3"
+            className="flex-shrink-0 inline w-5 h-5 mr-3"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -205,9 +205,9 @@ const NewArrivals = ({ products, loading, type }) => {
               clip-rule="evenodd"
             ></path>
           </svg>
-          <span class="sr-only">Warning</span>
+          <span className="sr-only">Warning</span>
           <div>
-            <span class="font-medium">Warning alert!</span> No product added
+            <span className="font-medium">Warning alert!</span> No product added
             yet!
           </div>
         </div>

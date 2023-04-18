@@ -9,13 +9,13 @@ const TableWarning = ({ title }) => {
       <div className="h-full w-full flex justify-center items-center">
         <div
           id="alert-additional-content-4"
-          class="p-4 mb-4 text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50"
+          className="p-4 mb-4 text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50"
           role="alert"
         >
-          <div class="flex items-center">
+          <div className="flex items-center">
             <svg
               aria-hidden="true"
-              class="w-5 h-5 mr-2"
+              className="w-5 h-5 mr-2"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -26,21 +26,23 @@ const TableWarning = ({ title }) => {
                 clip-rule="evenodd"
               ></path>
             </svg>
-            <span class="sr-only">Info</span>
-            <h3 class="text-lg font-medium">No <span className="uppercase">{title}</span> to show</h3>
+            <span className="sr-only">Info</span>
+            <h3 className="text-lg font-medium">
+              No <span className="uppercase">{title}</span> to show
+            </h3>
           </div>
-          <div class="mt-2 mb-4 text-sm">
+          <div className="mt-2 mb-4 text-sm">
             All you need to add some {title} to show.
           </div>
-          <div class="flex">
+          <div className="flex">
             <button
               type="button"
-              class="text-white bg-yellow-800 hover:bg-yellow-900 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-xs px-3 py-1.5 mr-2 text-center inline-flex items-center"
+              className="text-white bg-yellow-800 hover:bg-yellow-900 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-xs px-3 py-1.5 mr-2 text-center inline-flex items-center"
               onClick={() => navigate(`/dashboard/add-new-${title}`)}
             >
               <svg
                 aria-hidden="true"
-                class="-ml-0.5 mr-2 h-4 w-4"
+                className="-ml-0.5 mr-2 h-4 w-4"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"

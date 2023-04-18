@@ -20,9 +20,15 @@ export const Carousel = forwardRef(({ options, children }, ref) => {
     <div className="glide" ref={sliderRef}>
       <div className="glide__track" data-glide-el="track">
         <ul className="glide__slides">{children}</ul>
-        <div class="glide__arrows flex gap-x-2 items-center lg:-top-[65px]" data-glide-el="controls">
-          <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+        <div
+          className="glide__arrows flex gap-x-2 items-center lg:-top-[65px]"
+          data-glide-el="controls"
+        >
+          <button
+            className="glide__arrow glide__arrow--left"
+            data-glide-dir="<"
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
               <path
                 d="M9.57 5.92993L3.5 11.9999L9.57 18.0699"
                 stroke="currentColor"
@@ -41,8 +47,11 @@ export const Carousel = forwardRef(({ options, children }, ref) => {
               ></path>
             </svg>
           </button>
-          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+          <button
+            className="glide__arrow glide__arrow--right"
+            data-glide-dir=">"
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
               <path
                 d="M14.4301 5.92993L20.5001 11.9999L14.4301 18.0699"
                 stroke="currentColor"

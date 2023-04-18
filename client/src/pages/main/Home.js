@@ -20,13 +20,13 @@ const Home = () => {
       <div className="lg:px-32 flex flex-col gap-y-32">
         <BuyingSteps />
         <NewArrivals
-          products={products.slice(-4)}
+          products={products}
           loading={isLoading}
           type={"carousel"}
         />
         <KidsProduct />
         <ExpertChoice
-          products={products.slice(0, 4)}
+          products={products.slice(-3)}
           loading={isLoading}
           type={"slide"}
         />
