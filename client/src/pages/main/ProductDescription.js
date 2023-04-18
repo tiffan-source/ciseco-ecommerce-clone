@@ -38,9 +38,7 @@ const ProductDescription = () => {
                 width={"640"}
                 src={thumbnail?.url}
                 alt={thumbnail?.public_id}
-                className={
-                  "max-w-full h-full w-full object-cover rounded-2xl"
-                }
+                className={"max-w-full h-full w-full object-cover rounded-2xl"}
               />
               <div className="grid grid-cols-3 gap-4">
                 {gallery?.map((image) => (
@@ -119,6 +117,18 @@ const ProductDescription = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+
+              {/* product meta tags */}
+              <div className="flex flex-wrap">
+                {tags?.map((tag, index) => (
+                  <span
+                    key={index}
+                    class="bg-cyan-100 text-cyan-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded border border-cyan-400"
+                  >
+                    #{tag}
+                  </span>
+                ))}
               </div>
 
               {/* add to cart */}
