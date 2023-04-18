@@ -7,6 +7,7 @@ import Signup from "../pages/main/Signup";
 import ForgotPassword from "../pages/main/ForgotPassword";
 import Contact from "../pages/main/Contact";
 import About from "../pages/main/About";
+import ProductDescription from "../pages/main/ProductDescription";
 const Home = lazy(() => import("../pages/main/Home"));
 
 const mainRoutes = {
@@ -58,6 +59,14 @@ const mainRoutes = {
       element: (
         <SplitRouter>
           <About />
+        </SplitRouter>
+      ),
+    },
+    {
+      path: "/product/:title/:pid",
+      element: (
+        <SplitRouter>
+          <ProductDescription />
         </SplitRouter>
       ),
     },
