@@ -13,7 +13,7 @@ const Footer = () => {
           <div className="flex md:flex-row md:justify-between flex-col items-center md:gap-0 gap-y-4 md:px-0 px-4">
             <Link to="/" title="Ciseco ECommerce">
               <LazyLoadingImage
-                src="logo.png"
+                src="/logo.png"
                 alt="logo"
                 className="block max-h-8 sm:max-h-10"
                 height={"150"}
