@@ -62,7 +62,28 @@ exports.displayProducts = async ({ page, limit }) => {
 
 /* display specific product */
 exports.displayProduct = async ({ id }) => {
-  return await Product.findById(id);
+  return await Product.findById(id).populate([
+    {
+      path: "subcategory",
+      select: "title description tags thumbnail",
+      populate: {
+        path: "category",
+        select: "title",
+      },
+    },
+    {
+      path: "brand",
+      select: "title description tags logo location",
+    },
+    {
+      path: "store",
+      select: "title description tags thumbnail",
+      populate: {
+        path: "seller",
+        select: "name",
+      },
+    },
+  ]);
 };
 
 /* update specific product */
