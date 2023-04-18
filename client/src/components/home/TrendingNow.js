@@ -1,6 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import LazyLoadingImage from "../LazyLoadingImage";
 import ProductCard from "./ProductCard";
 
 const TrendingNow = ({ products, loading }) => {
