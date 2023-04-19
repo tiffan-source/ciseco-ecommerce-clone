@@ -115,9 +115,10 @@ const StartExploring = () => {
                     <CategoryCards categories={categories} />
                   )}
                 </Tab.Panels>
-                {!stores?.length || !categories?.length ? (
+                {(explore === "Store" && !stores?.length) ||
+                (explore === "Category" && !categories?.length) ? (
                   <div
-                    className="flex p-4 mb-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50"
+                    className="flex p-4 my-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50 justify-center"
                     role="alert"
                   >
                     <svg
@@ -136,7 +137,7 @@ const StartExploring = () => {
                     <span className="sr-only">Warning</span>
                     <div>
                       <span className="font-medium">Warning alert!</span> No
-                      product added yet!
+                      explorer added yet!
                     </div>
                   </div>
                 ) : (

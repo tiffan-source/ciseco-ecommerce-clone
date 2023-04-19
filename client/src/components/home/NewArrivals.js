@@ -153,7 +153,7 @@ const NewArrivals = ({ products, loading, type }) => {
         </div>
       ) : (
         <div
-          className="flex p-4 mb-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50"
+          className="flex p-4 mb-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50 justify-center"
           role="alert"
         >
           <svg
