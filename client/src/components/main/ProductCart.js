@@ -6,14 +6,14 @@ import { Link } from "react-router-dom";
 import CheckoutModal from "./CheckoutModal";
 
 const ProductCart = () => {
-  const { cart } = useSelector((state) => state.auth.user);
+  const { cart } = useSelector((state) => state?.auth?.user);
   const [isOpen, setIsOpen] = useState(false);
 
   // find subtotal from cart
 
   let subtotal = 0;
-  cart.forEach((item) => {
-    subtotal += item.product.price * item.quantity;
+  cart?.forEach((item) => {
+    subtotal += item?.product?.price * item?.quantity;
   });
 
   return (
