@@ -83,6 +83,10 @@ exports.displayProduct = async ({ id }) => {
         select: "name",
       },
     },
+    {
+      path: "review.reviewer",
+      select: "name avatar",
+    },
   ]);
 };
 
