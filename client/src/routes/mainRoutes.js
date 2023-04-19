@@ -1,13 +1,16 @@
 import { lazy } from "react";
 import SplitRouter from "./SplitRouter";
 import Main from "../layouts/main/Main";
-import NotFound from "../pages/NotFound";
+// import NotFound from "../pages/NotFound";
 import Signin from "../pages/main/Signin";
 import Signup from "../pages/main/Signup";
 import ForgotPassword from "../pages/main/ForgotPassword";
 import Contact from "../pages/main/Contact";
 import About from "../pages/main/About";
 import ProductDescription from "../pages/main/ProductDescription";
+import Profile from "../pages/main/Profile";
+import Order from "../pages/main/Order";
+import ComingSoon from "../components/main/ComingSoon";
 const Home = lazy(() => import("../pages/main/Home"));
 
 const mainRoutes = {
@@ -63,6 +66,22 @@ const mainRoutes = {
       ),
     },
     {
+      path: "/my-profile",
+      element: (
+        <SplitRouter>
+          <Profile />
+        </SplitRouter>
+      ),
+    },
+    {
+      path: "/my-order",
+      element: (
+        <SplitRouter>
+          <Order />
+        </SplitRouter>
+      ),
+    },
+    {
       path: "/product/:title/:pid",
       element: (
         <SplitRouter>
@@ -74,7 +93,8 @@ const mainRoutes = {
       path: "/*",
       element: (
         <SplitRouter>
-          <NotFound />
+          {/* <NotFound /> */}
+          <ComingSoon />
         </SplitRouter>
       ),
     },
