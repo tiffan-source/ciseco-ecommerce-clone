@@ -46,6 +46,16 @@ const authApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["User"],
     }),
+
+    // update user
+    updateUser: builder.mutation({
+      query: ({ uid, userData }) => ({
+        url: `api/user/${uid}`,
+        method: "PATCH",
+        body: userData,
+      }),
+      invalidatesTags: ["User"],
+    }),
   }),
 });
 
@@ -53,4 +63,5 @@ export const {
   useSignupMutation,
   useSigninMutation,
   useForgotPasswordMutation,
+  useUpdateUserMutation,
 } = authApi;

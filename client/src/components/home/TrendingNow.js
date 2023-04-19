@@ -5,12 +5,12 @@ const TrendingNow = ({ products, loading }) => {
   return (
     <>
       <section>
-        <div class="nc-Section-Heading relative flex flex-col sm:flex-row sm:items-end justify-between mb-10 md:mb-12 text-neutral-900">
-          <div class="max-w-2xl">
-            <h2 class="text-3xl md:text-4xl font-semibold">
+        <div className="nc-Section-Heading relative flex flex-col sm:flex-row sm:items-end justify-between mb-10 md:mb-12 text-neutral-900">
+          <div className="max-w-2xl">
+            <h2 className="text-3xl md:text-4xl font-semibold">
               What's trending now
             </h2>
-            <span class="mt-2 md:mt-4 font-normal block text-base sm:text-lg text-neutral-500">
+            <span className="mt-2 md:mt-4 font-normal block text-base sm:text-lg text-neutral-500">
               Discover the most trending products in Ciseco.
             </span>
           </div>

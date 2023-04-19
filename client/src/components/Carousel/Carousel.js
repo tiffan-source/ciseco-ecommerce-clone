@@ -32,18 +32,18 @@ export const Carousel = forwardRef(({ options, children }, ref) => {
               <path
                 d="M9.57 5.92993L3.5 11.9999L9.57 18.0699"
                 stroke="currentColor"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke-miterlimit="10"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               ></path>
               <path
                 d="M20.5 12H3.67004"
                 stroke="currentColor"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke-miterlimit="10"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               ></path>
             </svg>
           </button>
@@ -55,18 +55,18 @@ export const Carousel = forwardRef(({ options, children }, ref) => {
               <path
                 d="M14.4301 5.92993L20.5001 11.9999L14.4301 18.0699"
                 stroke="currentColor"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke-miterlimit="10"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               ></path>
               <path
                 d="M3.5 12H20.33"
                 stroke="currentColor"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke-miterlimit="10"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               ></path>
             </svg>
           </button>

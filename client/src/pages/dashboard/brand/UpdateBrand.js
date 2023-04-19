@@ -378,7 +378,7 @@ const UpdateBrand = () => {
                                 <path
                                   fillRule="evenodd"
                                   d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                  clip-rule="evenodd"
+                                  clipRule="evenodd"
                                 ></path>
                               </svg>
                               Logo uploaded
@@ -412,10 +412,7 @@ const UpdateBrand = () => {
                             className={`w-full form-input rounded-md`}
                             onChange={(event) => {
                               const formData = new FormData();
-                              formData.append(
-                                "logo",
-                                event.target.files[0]
-                              );
+                              formData.append("logo", event.target.files[0]);
                               updateBrandThumbnail({
                                 route: "brand/logo",
                                 public_id: logo?.public_id,

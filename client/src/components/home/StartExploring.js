@@ -24,7 +24,7 @@ const StartExploring = () => {
           width="16"
           height="16"
           fill="currentColor"
-          class="bi bi-hdd-stack-fill w-4 h-4 sm:w-5 sm:h-5"
+          className="bi bi-hdd-stack-fill w-4 h-4 sm:w-5 sm:h-5"
           viewBox="0 0 16 16"
         >
           <path d="M2 9a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2H2zm.5 3a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm2 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zM2 2a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm.5 3a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm2 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1z" />
@@ -39,7 +39,7 @@ const StartExploring = () => {
           width="16"
           height="16"
           fill="currentColor"
-          class="bi bi-basket3-fill w-4 h-4 sm:w-5 sm:h-5"
+          className="bi bi-basket3-fill w-4 h-4 sm:w-5 sm:h-5"
           viewBox="0 0 16 16"
         >
           <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.468 15.426.943 9h14.114l-1.525 6.426a.75.75 0 0 1-.729.574H3.197a.75.75 0 0 1-.73-.574z" />
@@ -58,21 +58,21 @@ const StartExploring = () => {
 
   return (
     <>
-      <div class="relative py-24 lg:py-32">
+      <div className="relative py-24 lg:py-32">
         <div
-          class="absolute inset-y-0 w-screen xl:max-w-[1340px] 2xl:max-w-screen-2xl left-1/2 transform -translate-x-1/2 xl:rounded-[40px] z-0 bg-neutral-100/70"
+          className="absolute inset-y-0 w-screen xl:max-w-[1340px] 2xl:max-w-screen-2xl left-1/2 transform -translate-x-1/2 xl:rounded-[40px] z-0 bg-neutral-100/70"
           data-nc-id="BackgroundSection"
         ></div>
-        <div class="relative" data-nc-id="SectionGridMoreExplore">
+        <div className="relative" data-nc-id="SectionGridMoreExplore">
           <div>
-            <div class="relative flex flex-col sm:flex-row sm:items-end justify-between mb-12 lg:mb-14 text-neutral-900">
-              <div class="flex flex-col items-center text-center w-full mx-auto">
-                <h2 class="justify-center text-3xl md:text-4xl 2xl:text-5xl font-semibold">
+            <div className="relative flex flex-col sm:flex-row sm:items-end justify-between mb-12 lg:mb-14 text-neutral-900">
+              <div className="flex flex-col items-center text-center w-full mx-auto">
+                <h2 className="justify-center text-3xl md:text-4xl 2xl:text-5xl font-semibold">
                   Start exploring.
                 </h2>
               </div>
             </div>
-            <div class="mb-12 lg:mb-14 relative flex flex-col w-full text-sm md:text-base">
+            <div className="mb-12 lg:mb-14 relative flex flex-col w-full text-sm md:text-base">
               <Tab.Group>
                 <Tab.List className="nc-Nav mb-12 lg:mb-14 relative flex justify-center w-full text-sm md:text-base">
                   <ul className="flex  p-1 bg-white rounded-full shadow-lg overflow-x-auto hiddenScrollbar">
@@ -90,8 +90,10 @@ const StartExploring = () => {
                             )
                           }
                         >
-                          <div class="flex items-center justify-center space-x-1.5 sm:space-x-2.5 text-xs sm:text-sm">
-                            <span class="inline-block">{tabHeader.icon}</span>
+                          <div className="flex items-center justify-center space-x-1.5 sm:space-x-2.5 text-xs sm:text-sm">
+                            <span className="inline-block">
+                              {tabHeader.icon}
+                            </span>
                             <span>{tabHeader.name}</span>
                           </div>
                         </Tab>
@@ -113,38 +115,65 @@ const StartExploring = () => {
                     <CategoryCards categories={categories} />
                   )}
                 </Tab.Panels>
-                <div class="flex mt-16 justify-center items-center">
-                  <button
-                    class="nc-Button relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm sm:text-base font-medium py-3 px-4 sm:py-3.5 sm:px-6 disabled:bg-opacity-90 bg-slate-900 hover:bg-slate-800 text-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-6000"
-                    onClick={() => {
-                      (explore === "Category" &&
-                        setCategoryLimit(categoryLimit + 3)) ||
-                        (explore === "Store" && setStoreLimit(storeLimit + 3));
-                    }}
+                {!stores?.length || !categories?.length ? (
+                  <div
+                    className="flex p-4 mb-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50"
+                    role="alert"
                   >
                     <svg
-                      class="animate-spin -ml-1 mr-3 h-5 w-5"
+                      aria-hidden="true"
+                      className="flex-shrink-0 inline w-5 h-5 mr-3"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
                     >
-                      <circle
-                        class="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        stroke-width="3"
-                      ></circle>
                       <path
-                        class="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        fillRule="evenodd"
+                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                        clipRule="evenodd"
                       ></path>
                     </svg>
-                    Show me more
-                  </button>
-                </div>
+                    <span className="sr-only">Warning</span>
+                    <div>
+                      <span className="font-medium">Warning alert!</span> No
+                      product added yet!
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex mt-16 justify-center items-center">
+                    <button
+                      className="nc-Button relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm sm:text-base font-medium py-3 px-4 sm:py-3.5 sm:px-6 disabled:bg-opacity-90 bg-slate-900 hover:bg-slate-800 text-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-6000"
+                      onClick={() => {
+                        (explore === "Category" &&
+                          setCategoryLimit(categoryLimit + 3)) ||
+                          (explore === "Store" &&
+                            setStoreLimit(storeLimit + 3));
+                      }}
+                    >
+                      <svg
+                        className="animate-spin -ml-1 mr-3 h-5 w-5"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="3"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
+                      </svg>
+                      Show me more
+                    </button>
+                  </div>
+                )}
               </Tab.Group>
             </div>
           </div>
