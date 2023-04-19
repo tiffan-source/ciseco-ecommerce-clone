@@ -119,7 +119,6 @@ const UpdateProduct = () => {
 
     const { productTags: _, ...productData } = data;
     updateProduct({ pid: pid, productData });
-    console.log(productData);
   };
 
   return (
