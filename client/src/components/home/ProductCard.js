@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import LazyLoadingImage from "../LazyLoadingImage";
 
 const ProductCard = ({ product }) => {
-  const { _id, title, description, thumbnail, subcategory, price, review } =
+  const { _id, title, tags, thumbnail, subcategory, brand, price } =
     product || {};
   return (
     <>
@@ -62,9 +62,6 @@ const ProductCard = ({ product }) => {
               <title>{title}</title>
               {title}
             </h2>
-            <p className="text-sm font-normal text-slate-500 mt-1 line-clamp-2">
-              {description}
-            </p>
           </div>
           <div className="flex justify-between items-end">
             <div className="">
@@ -86,11 +83,22 @@ const ProductCard = ({ product }) => {
                   clipRule="evenodd"
                 ></path>
               </svg>
-              <span className="text-sm ml-1 text-slate-500">
-                N/A ({review?.length} reviews)
+              <span className="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded border-blue-400">
+                {brand?.title}
               </span>
             </div>
           </div>
+        </div>
+        {/* product tags */}
+        <div className="flex flex-wrap gap-y-2 mt-4">
+          {tags?.map((tag, index) => (
+            <span
+              key={index}
+              className="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded border-gray-500"
+            >
+              #{tag}
+            </span>
+          ))}
         </div>
       </div>
     </>

@@ -25,7 +25,7 @@ const TrendingNow = ({ products, loading }) => {
             ))}
           </div>
         )}
-        {!products?.length && (
+        {!products?.length && !loading && (
           <div
             className="flex p-4 mb-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50"
             role="alert"

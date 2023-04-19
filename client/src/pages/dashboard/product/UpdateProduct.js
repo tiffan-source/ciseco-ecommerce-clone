@@ -385,7 +385,7 @@ const UpdateProduct = () => {
                           <option
                             key={sc?._id}
                             value={sc?._id}
-                            selected={sc?._id === subcategory}
+                            selected={sc?._id === subcategory?._id}
                           >
                             {sc?.title}
                           </option>
@@ -442,7 +442,7 @@ const UpdateProduct = () => {
                           <option
                             key={br?._id}
                             value={br?._id}
-                            selected={br?._id === brand}
+                            selected={br?._id === brand?._id}
                           >
                             {br?.title}
                           </option>
@@ -499,7 +499,7 @@ const UpdateProduct = () => {
                           <option
                             key={st?._id}
                             value={st?._id}
-                            selected={st?._id === store}
+                            selected={st?._id === store?._id}
                           >
                             {st?.title}
                           </option>
