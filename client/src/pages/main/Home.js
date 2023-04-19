@@ -33,7 +33,7 @@ const Home = () => {
           type={"slide"}
         />
         <StartExploring />
-        <TrendingNow products={products} loading={isLoading} />
+        <TrendingNow products={products.slice(-12)} loading={isLoading} />
       </div>
     </section>
   );
