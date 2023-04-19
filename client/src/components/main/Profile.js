@@ -38,7 +38,7 @@ const Profile = () => {
   ];
 
   return (
-    <Menu as="div" className="relative inline-block text-left z-50">
+    <Menu as="div" className="relative inline-block text-left z-20">
       <div>
         <Menu.Button className="text-gray-600 hover:text-blue-600 flex gap-x-4 items-center">
           <svg

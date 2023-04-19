@@ -15,7 +15,6 @@ const Home = () => {
   });
 
   const products = productData?.data || [];
-  console.log(products);
 
   return (
     <section className="container mx-auto flex flex-col gap-y-32 px-4">

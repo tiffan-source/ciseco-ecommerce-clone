@@ -81,7 +81,10 @@ exports.forgotPassword = async ({ email, password }) => {
 
 // login persistency
 exports.persistLogin = async ({ _id }) => {
-  const user = await User.findById(_id);
+  const user = await User.findById(_id).populate({
+    path: "cart.product",
+    select: "title thumbnail price",
+  });
   return user;
 };
 

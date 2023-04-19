@@ -33,7 +33,7 @@ export default function Dropdown() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Popover.Panel className="absolute -right-[90px] w-80 overflow-y-auto origin-top-right divide-y divide-gray-100 rounded-2xl bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Popover.Panel className="absolute -right-[90px] w-80 overflow-y-auto scrollbar-hide origin-top-right divide-y divide-gray-100 rounded-2xl bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <MenuItems />
           <div className="p-4 bg-neutral-50">
             <a
