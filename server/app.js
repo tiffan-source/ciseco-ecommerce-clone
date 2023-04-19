@@ -64,3 +64,8 @@ app.get("/", (req, res, next) => {
 
 /* export application */
 module.exports = app;
+
+/**
+ * How to fix: "error fsevents@2.0.7: The platform "linux" is incompatible with this module."
+ * https://stackoverflow.com/questions/57082249/how-to-fix-error-fsevents2-0-7-the-platform-linux-is-incompatible-with-thi
+ */
