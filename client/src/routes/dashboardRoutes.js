@@ -17,6 +17,7 @@ import UpdateBrand from "../pages/dashboard/brand/UpdateBrand";
 import AddNewStore from "../pages/dashboard/store/AddNewStore";
 import ListStore from "../pages/dashboard/store/ListStore";
 import UpdateStore from "../pages/dashboard/store/UpdateStore";
+import ListUser from "../pages/dashboard/ListUser";
 
 const dashboardRoutes = {
   path: "/dashboard",
@@ -91,6 +92,10 @@ const dashboardRoutes = {
     {
       path: "update-store/:sid",
       element: <SplitRouter>{<UpdateStore />}</SplitRouter>,
+    },
+    {
+      path: "list-user",
+      element: <SplitRouter>{<ListUser />}</SplitRouter>,
     },
   ],
 };

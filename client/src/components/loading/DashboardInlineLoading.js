@@ -2,7 +2,7 @@ import React from "react";
 
 const DashboardInlineLoading = () => {
   return (
-    <section className="flex items-center">
+    <section className="flex justify-center items-center">
       <div role="status">
         <svg
           aria-hidden="true"

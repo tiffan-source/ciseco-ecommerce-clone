@@ -37,6 +37,18 @@ const authApi = apiSlice.injectEndpoints({
       },
     }),
 
+    // display all users
+    displayUsers: builder.query({
+      query: ({ page, limit }) => ({
+        url:
+          page && limit
+            ? `api/user/all?page=${page}&limit=${limit}`
+            : `api/user/all`,
+        method: "GET",
+      }),
+      providesTags: ["User"],
+    }),
+
     // forgot password
     forgotPassword: builder.mutation({
       query: (data) => ({
@@ -64,4 +76,5 @@ export const {
   useSigninMutation,
   useForgotPasswordMutation,
   useUpdateUserMutation,
+  useDisplayUsersQuery,
 } = authApi;

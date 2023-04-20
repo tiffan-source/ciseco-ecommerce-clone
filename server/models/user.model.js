@@ -101,7 +101,7 @@ const userSchema = new mongoose.Schema(
     // for user role to be played
     role: {
       type: String,
-      enum: ["admin", "buyer", "seller", "supplier", "deliverer"],
+      enum: ["admin", "buyer", "seller"],
       default: "buyer",
     },
 

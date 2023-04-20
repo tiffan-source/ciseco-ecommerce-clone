@@ -93,7 +93,11 @@ exports.displayUsers = async ({ page, limit }) => {
   const result = await User.find({})
     .skip((Number(page) - 1) * limit)
     .limit(limit)
-    .sort("-updatedAt");
+    .sort("-updatedAt")
+    .populate({
+      path: "store",
+      select: "title",
+    });
 
   const count = await User.estimatedDocumentCount();
   return { users: result, count };
