@@ -90,13 +90,13 @@ const ProductCart = () => {
             >
               <Popover.Panel className="absolute md:right-0 w-screen max-w-xs sm:max-w-md overflow-y-auto origin-top-right divide-y divide-gray-100 rounded-2xl bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                  <div class="max-h-[60vh] p-5 overflow-y-auto scrollbar-hide">
-                    <h3 class="text-xl font-semibold">Shopping cart</h3>
+                  <div className="max-h-[60vh] p-5 overflow-y-auto scrollbar-hide">
+                    <h3 className="text-xl font-semibold">Shopping cart</h3>
                     {cart?.length ? (
-                      <div class="divide-y divide-slate-100">
+                      <div className="divide-y divide-slate-100">
                         {cart?.map((crt) => (
-                          <div key={crt?._id} class="flex py-5 last:pb-0">
-                            <div class="relative h-24 w-20 flex-shrink-0 overflow-hidden rounded-xl bg-slate-100">
+                          <div key={crt?._id} className="flex py-5 last:pb-0">
+                            <div className="relative h-24 w-20 flex-shrink-0 overflow-hidden rounded-xl bg-slate-100">
                               <LazyLoadingImage
                                 src={crt?.product?.thumbnail?.url}
                                 alt={crt?.product?.thumbnail?.public_id}
@@ -107,13 +107,13 @@ const ProductCart = () => {
                                 }
                               />
                             </div>
-                            <div class="ml-4 flex flex-1 flex-col">
+                            <div className="ml-4 flex flex-1 flex-col">
                               <div>
-                                <div class="flex justify-between">
+                                <div className="flex justify-between">
                                   <div>
-                                    <h3 class="text-base font-medium">
+                                    <h3 className="text-base font-medium">
                                       <Link
-                                        class="text-base font-medium line-clamp-2"
+                                        className="text-base font-medium line-clamp-2"
                                         to={`/product/${crt?.product?.title
                                           .toLowerCase()
                                           .replace(/\s/g, "-")}/${
@@ -124,21 +124,23 @@ const ProductCart = () => {
                                       </Link>
                                     </h3>
                                   </div>
-                                  <div class="mt-0.5">
-                                    <div class="flex items-center border-2 border-green-500 rounded-lg py-1 px-2 md:py-1.5 md:px-2.5 text-sm font-medium">
-                                      <span class="text-green-500 !leading-none">
+                                  <div className="mt-0.5">
+                                    <div className="flex items-center border-2 border-green-500 rounded-lg py-1 px-2 md:py-1.5 md:px-2.5 text-sm font-medium">
+                                      <span className="text-green-500 !leading-none">
                                         ৳{crt?.product?.price}
                                       </span>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                              <div class="flex flex-1 items-end justify-between text-sm">
-                                <p class="text-gray-500">Qty {crt?.quantity}</p>
-                                <div class="flex">
+                              <div className="flex flex-1 items-end justify-between text-sm">
+                                <p className="text-gray-500">
+                                  Qty {crt?.quantity}
+                                </p>
+                                <div className="flex">
                                   <button
                                     type="button"
-                                    class="font-medium text-red-600"
+                                    className="font-medium text-red-600"
                                     onClick={() =>
                                       removeFromCart({
                                         uid: _id,
@@ -182,19 +184,19 @@ const ProductCart = () => {
                       </div>
                     )}
                   </div>
-                  <div class="bg-neutral-50 p-5">
-                    <p class="flex justify-between font-semibold text-slate-900">
+                  <div className="bg-neutral-50 p-5">
+                    <p className="flex justify-between font-semibold text-slate-900">
                       <span>
                         <span>Subtotal</span>
-                        <span class="block text-sm text-slate-500 font-normal">
+                        <span className="block text-sm text-slate-500 font-normal">
                           Shipping and taxes calculated at checkout.
                         </span>
                       </span>
-                      <span class="">৳{subtotal}.00</span>
+                      <span className="">৳{subtotal}.00</span>
                     </p>
-                    <div class="flex space-x-2 mt-5">
+                    <div className="flex space-x-2 mt-5">
                       <button
-                        class="nc-Button relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm sm:text-base font-medium py-3 px-4 sm:py-3.5 sm:px-6 disabled:bg-opacity-90 bg-slate-900 hover:bg-slate-800 text-slate-50 shadow-xl flex-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-6000"
+                        className="nc-Button relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm sm:text-base font-medium py-3 px-4 sm:py-3.5 sm:px-6 disabled:bg-opacity-90 bg-slate-900 hover:bg-slate-800 text-slate-50 shadow-xl flex-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-6000"
                         onClick={() => setIsOpen(true)}
                         disabled={!cart?.length}
                       >

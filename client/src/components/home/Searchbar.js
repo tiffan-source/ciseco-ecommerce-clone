@@ -48,16 +48,19 @@ const Searchbar = () => {
               value={input}
               onChange={(e) => handleSearchKeyword(e.target.value)}
             />
-            <button className="p-2 md:rounded-xl rounded bg-[#fea285] hover:bg-[#dd89e3] hover:transition-all hover:duration-300 md:h-14 md:w-14 h-9 w-9 grid md:place-items-center content-center justify-center">
+            <button
+              className="p-2 md:rounded-xl rounded bg-[#fea285] hover:bg-[#dd89e3] hover:transition-all hover:duration-300 md:h-14 md:w-14 h-9 w-9 grid md:place-items-center content-center justify-center"
+              disabled={input.length === 0}
+            >
               {isProductsLoading ? (
                 <svg
-                  class="animate-spin text-white md:h-8 md:w-8 h-6 w-6"
+                  className="animate-spin text-white md:h-8 md:w-8 h-6 w-6"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                 >
                   <circle
-                    class="opacity-25"
+                    className="opacity-25"
                     cx="12"
                     cy="12"
                     r="10"
@@ -65,7 +68,7 @@ const Searchbar = () => {
                     stroke-width="3"
                   ></circle>
                   <path
-                    class="opacity-75"
+                    className="opacity-75"
                     fill="currentColor"
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                   ></path>
@@ -80,17 +83,17 @@ const Searchbar = () => {
               {searchedProducts.map(({ _id, title, description }) => (
                 <div
                   key={_id}
-                  class="cursor-pointer py-2 px-3 rounded-xl hover:bg-slate-100"
+                  className="cursor-pointer py-2 px-3 rounded-xl hover:bg-slate-100"
                   onClick={() => {
                     setInput(title);
                     setSearchedProducts([]);
                     setSearchProduct({ _id, title });
                   }}
                 >
-                  <p class="text-sm font-medium text-gray-600 line-clamp-1">
+                  <p className="text-sm font-medium text-gray-600 line-clamp-1">
                     {title}
                   </p>
-                  <p class="text-sm text-gray-500 line-clamp-2">
+                  <p className="text-sm text-gray-500 line-clamp-2">
                     {description}
                   </p>
                 </div>

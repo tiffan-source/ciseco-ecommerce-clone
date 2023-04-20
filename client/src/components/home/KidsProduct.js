@@ -40,12 +40,9 @@ const KidsProduct = () => {
               period and place.
             </span>
             <div className="flex space-x-2 sm:space-x-5 mt-6 sm:mt-12">
-              <Link
-                className="nc-Button relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm sm:text-base font-medium py-3 px-4 sm:py-3.5 sm:px-6 disabled:bg-opacity-90 bg-slate-900 hover:bg-slate-800 text-slate-50 shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-6000 dark:focus:ring-offset-0"
-                to="/category/kid/643e6d7be7f0bceb0c5703ee"
-              >
+              <button className="nc-Button relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm sm:text-base font-medium py-3 px-4 sm:py-3.5 sm:px-6 disabled:bg-opacity-90 bg-slate-900 hover:bg-slate-800 text-slate-50 shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-6000">
                 Discover more
-              </Link>
+              </button>
             </div>
           </div>
           <div

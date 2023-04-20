@@ -7,6 +7,7 @@ import KidsProduct from "../../components/home/KidsProduct";
 import ExpertChoice from "../../components/home/ExpertChoice";
 import StartExploring from "../../components/home/StartExploring";
 import TrendingNow from "../../components/home/TrendingNow";
+import EarnMoney from "../../components/home/EarnMoney";
 
 const Home = () => {
   const { data: productData, isLoading } = useDisplayProductsQuery({
@@ -34,6 +35,7 @@ const Home = () => {
         />
         <StartExploring />
         <TrendingNow products={products.slice(-12)} loading={isLoading} />
+        <EarnMoney />
       </div>
     </section>
   );

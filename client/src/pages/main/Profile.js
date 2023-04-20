@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useUpdatePhotoMutation } from "../../features/update/updateApi";
 import { useUpdateUserMutation } from "../../features/auth/authApi";
+import LazyLoadingImage from "../../components/LazyLoadingImage";
 
 const Profile = () => {
   const {
@@ -55,24 +56,26 @@ const Profile = () => {
   return (
     <>
       <div className="container mx-auto lg:px-0 px-4">
-        <div class="max-w-4xl mx-auto pt-14 sm:pt-26 pb-24 lg:pb-32">
-          <div class="space-y-10 sm:space-y-12">
-            <h2 class="text-2xl sm:text-3xl font-semibold">
+        <div className="max-w-4xl mx-auto pt-14 sm:pt-26 pb-24 lg:pb-32">
+          <div className="space-y-10 sm:space-y-12">
+            <h2 className="text-2xl sm:text-3xl font-semibold">
               Account information
             </h2>
-            <div class="flex flex-col md:flex-row">
-              <div class="flex-shrink-0 flex items-start">
-                <div class="relative rounded-full overflow-hidden flex">
-                  <img
+            <div className="flex flex-col md:flex-row">
+              <div className="flex-shrink-0 flex items-start">
+                <div className="relative rounded-full overflow-hidden flex">
+                  <LazyLoadingImage
                     src={Object.keys(photo)?.length ? photo?.url : avatar?.url}
                     alt={
                       Object.keys(photo)?.length
                         ? photo?.public_id
                         : avatar?.public_id
                     }
-                    class="w-32 h-32 rounded-full object-cover object-center z-0"
+                    className="w-32 h-32 rounded-full object-cover object-center z-0"
+                    height={"128"}
+                    width={"128"}
                   />
-                  <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center text-neutral-50 cursor-pointer">
+                  <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center text-neutral-50 cursor-pointer">
                     {avatarUploading ? (
                       <svg
                         className="animate-spin h-5 w-5"
@@ -111,14 +114,14 @@ const Profile = () => {
                         ></path>
                       </svg>
                     )}
-                    <span class="mt-1 text-xs">Change Image</span>
+                    <span className="mt-1 text-xs">Change Image</span>
                   </div>
                   <input
                     {...register("avatar", { required: false })}
                     name="avatar"
                     accept="image/png, image/jpeg, image/jpg, image/webp"
                     type="file"
-                    class="absolute inset-0 opacity-0 cursor-pointer"
+                    className="absolute inset-0 opacity-0 cursor-pointer"
                     onChange={(event) => {
                       const formData = new FormData();
                       formData.append("avatar", event.target.files[0]);
@@ -133,11 +136,11 @@ const Profile = () => {
               </div>
               <form
                 onSubmit={handleSubmit(handleUpdateUserAccount)}
-                class="flex-grow mt-10 md:mt-0 md:pl-16 max-w-3xl space-y-6"
+                className="flex-grow mt-10 md:mt-0 md:pl-16 max-w-3xl space-y-6"
               >
                 <div>
                   <label
-                    class="nc-Label text-base font-medium text-neutral-900"
+                    className="nc-Label text-base font-medium text-neutral-900"
                     data-nc-id="Label"
                   >
                     Full name
@@ -146,24 +149,24 @@ const Profile = () => {
                     {...register("name", { required: false })}
                     name="name"
                     type="text"
-                    class="block w-full border-neutral-200 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 bg-white rounded-2xl text-sm font-normal h-11 px-4 py-3 mt-1.5"
+                    className="block w-full border-neutral-200 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 bg-white rounded-2xl text-sm font-normal h-11 px-4 py-3 mt-1.5"
                   />
                 </div>
                 <div>
                   <label
-                    class="nc-Label text-base font-medium text-neutral-900"
+                    className="nc-Label text-base font-medium text-neutral-900"
                     data-nc-id="Label"
                   >
                     Email
                   </label>
-                  <div class="mt-1.5 flex">
-                    <span class="inline-flex items-center px-4 rounded-l-2xl border border-r-0 border-neutral-200 bg-neutral-50 text-neutral-500 text-sm">
+                  <div className="mt-1.5 flex">
+                    <span className="inline-flex items-center px-4 rounded-l-2xl border border-r-0 border-neutral-200 bg-neutral-50 text-neutral-500 text-sm">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
                         height="16"
                         fill="currentColor"
-                        class="bi bi-envelope-at h-6 w-6"
+                        className="bi bi-envelope-at h-6 w-6"
                         viewBox="0 0 16 16"
                       >
                         <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z" />
@@ -174,25 +177,25 @@ const Profile = () => {
                       {...register("email", { required: false })}
                       name="email"
                       type="text"
-                      class="block w-full border-neutral-200 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 bg-white rounded-2xl text-sm font-normal h-11 px-4 py-3 !rounded-l-none"
+                      className="block w-full border-neutral-200 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 bg-white rounded-2xl text-sm font-normal h-11 px-4 py-3 !rounded-l-none"
                     />
                   </div>
                 </div>
-                <div class="max-w-lg">
+                <div className="max-w-lg">
                   <label
-                    class="nc-Label text-base font-medium text-neutral-900"
+                    className="nc-Label text-base font-medium text-neutral-900"
                     data-nc-id="Label"
                   >
                     Date of birth
                   </label>
-                  <div class="mt-1.5 flex">
-                    <span class="inline-flex items-center px-4 rounded-l-2xl border border-r-0 border-neutral-200 bg-neutral-50 text-neutral-500 text-sm">
+                  <div className="mt-1.5 flex">
+                    <span className="inline-flex items-center px-4 rounded-l-2xl border border-r-0 border-neutral-200 bg-neutral-50 text-neutral-500 text-sm">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
                         height="16"
                         fill="currentColor"
-                        class="bi bi-calendar-minus h-6 w-6"
+                        className="bi bi-calendar-minus h-6 w-6"
                         viewBox="0 0 16 16"
                       >
                         <path d="M5.5 9.5A.5.5 0 0 1 6 9h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z" />
@@ -206,25 +209,25 @@ const Profile = () => {
                       autoComplete="off"
                       defaultValue={defaultValue}
                       {...register("dateOfBirth", { required: false })}
-                      class="block w-full border-neutral-200 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 bg-white rounded-2xl text-sm font-normal h-11 px-4 py-3 !rounded-l-none"
+                      className="block w-full border-neutral-200 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 bg-white rounded-2xl text-sm font-normal h-11 px-4 py-3 !rounded-l-none"
                     />
                   </div>
                 </div>
                 <div>
                   <label
-                    class="nc-Label text-base font-medium text-neutral-900"
+                    className="nc-Label text-base font-medium text-neutral-900"
                     data-nc-id="Label"
                   >
                     Address
                   </label>
-                  <div class="mt-1.5 flex">
-                    <span class="inline-flex items-center px-4 rounded-l-2xl border border-r-0 border-neutral-200 bg-neutral-50 text-neutral-500 text-sm">
+                  <div className="mt-1.5 flex">
+                    <span className="inline-flex items-center px-4 rounded-l-2xl border border-r-0 border-neutral-200 bg-neutral-50 text-neutral-500 text-sm">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
                         height="16"
                         fill="currentColor"
-                        class="bi bi-geo h-6 w-6"
+                        className="bi bi-geo h-6 w-6"
                         viewBox="0 0 16 16"
                       >
                         <path
@@ -237,14 +240,14 @@ const Profile = () => {
                       {...register("address", { required: false })}
                       name="address"
                       type="text"
-                      class="block w-full border-neutral-200 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 bg-white rounded-2xl text-sm font-normal h-11 px-4 py-3 !rounded-l-none"
+                      className="block w-full border-neutral-200 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 bg-white rounded-2xl text-sm font-normal h-11 px-4 py-3 !rounded-l-none"
                       placeholder={!address && "Enter your address"}
                     />
                   </div>
                 </div>
                 <div>
                   <label
-                    class="nc-Label text-base font-medium text-neutral-900"
+                    className="nc-Label text-base font-medium text-neutral-900"
                     data-nc-id="Label"
                   >
                     Gender
@@ -252,7 +255,7 @@ const Profile = () => {
                   <select
                     name="gender"
                     {...register("gender", { required: false })}
-                    class="nc-Select h-11 mt-1.5 block w-full text-sm rounded-2xl border-neutral-200 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 bg-white"
+                    className="nc-Select h-11 mt-1.5 block w-full text-sm rounded-2xl border-neutral-200 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 bg-white"
                   >
                     <option selected={gender === "male"} value="male">
                       Male
@@ -267,19 +270,19 @@ const Profile = () => {
                 </div>
                 <div>
                   <label
-                    class="nc-Label text-base font-medium text-neutral-900"
+                    className="nc-Label text-base font-medium text-neutral-900"
                     data-nc-id="Label"
                   >
                     Phone number
                   </label>
-                  <div class="mt-1.5 flex">
-                    <span class="inline-flex items-center px-4 rounded-l-2xl border border-r-0 border-neutral-200 bg-neutral-50 text-neutral-500 text-sm">
+                  <div className="mt-1.5 flex">
+                    <span className="inline-flex items-center px-4 rounded-l-2xl border border-r-0 border-neutral-200 bg-neutral-50 text-neutral-500 text-sm">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
                         height="16"
                         fill="currentColor"
-                        class="bi bi-phone h-6 w-6"
+                        className="bi bi-phone h-6 w-6"
                         viewBox="0 0 16 16"
                       >
                         <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z" />
@@ -290,12 +293,12 @@ const Profile = () => {
                       {...register("phone", { required: false })}
                       name="phone"
                       type="text"
-                      class="block w-full border-neutral-200 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 bg-white rounded-2xl text-sm font-normal h-11 px-4 py-3 !rounded-l-none"
+                      className="block w-full border-neutral-200 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 bg-white rounded-2xl text-sm font-normal h-11 px-4 py-3 !rounded-l-none"
                     />
                   </div>
                 </div>
-                <div class="pt-2">
-                  <button class="nc-Button relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm sm:text-base font-medium py-3 px-4 sm:py-3.5 sm:px-6 ttnc-ButtonPrimary disabled:bg-opacity-90 bg-slate-900 hover:bg-slate-800 text-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-6000">
+                <div className="pt-2">
+                  <button className="nc-Button relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm sm:text-base font-medium py-3 px-4 sm:py-3.5 sm:px-6 ttnc-ButtonPrimary disabled:bg-opacity-90 bg-slate-900 hover:bg-slate-800 text-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-6000">
                     {isUserLoading ? "Updating..." : "Update account"}
                   </button>
                 </div>
