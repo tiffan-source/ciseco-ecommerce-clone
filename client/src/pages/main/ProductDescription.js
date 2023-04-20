@@ -59,7 +59,7 @@ const ProductDescription = () => {
       {isProductLoading ? (
         <SecondaryLoading />
       ) : (
-        <section className="container mx-auto px-4 lg:px-32 flex flex-col gap-y-32">
+        <section className="container mx-auto px-4 lg:px-32 flex flex-col gap-y-32 scroll-smooth">
           <div className="grid lg:grid-cols-2 grid-cols-1 gap-12">
             <div className="flex flex-col gap-y-4">
               <LazyLoadingImage
@@ -741,7 +741,7 @@ const ProductDescription = () => {
           <hr className="border-slate-200"></hr>
 
           {/* reviews */}
-          <div className="flex flex-col gap-y-8">
+          <div className="flex flex-col gap-y-8 scroll-smooth" id="reviews">
             <h2 className="text-2xl font-semibold flex items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
