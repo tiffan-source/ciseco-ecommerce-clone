@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   useDisplayProductQuery,
   useUpdateProductMutation,
@@ -11,6 +11,7 @@ import { ChevronUpIcon } from "@heroicons/react/20/solid";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useUpdateUserMutation } from "../../features/auth/authApi";
+import { toast } from "react-hot-toast";
 
 const ProductDescription = () => {
   const { pid } = useParams();
@@ -35,8 +36,21 @@ const ProductDescription = () => {
 
   const [addProductReview, { isLoading: isReviewLoading }] =
     useUpdateProductMutation();
-  const [addToCart, { isLoading: isCartLoading }] = useUpdateUserMutation();
+  const [addToCart, { isLoading: isCartLoading, isSuccess: isCartSuccess }] =
+    useUpdateUserMutation();
   const { user } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isCartSuccess) {
+      toast.success("Product added to cart!");
+      setTimeout(() => {
+        // window.location.reload();
+        navigate(0);
+      }, 1000);
+    }
+  }, [isCartSuccess, navigate]);
+
   // react hook form credentials
   const {
     register,

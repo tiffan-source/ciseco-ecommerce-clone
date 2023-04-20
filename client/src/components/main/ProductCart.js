@@ -1,19 +1,32 @@
 import { Popover, Transition } from "@headlessui/react";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import LazyLoadingImage from "../LazyLoadingImage";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CheckoutModal from "./CheckoutModal";
 import { useUpdateUserMutation } from "../../features/auth/authApi";
+import { toast } from "react-hot-toast";
 
 const ProductCart = () => {
   const { cart, _id } = useSelector((state) => state?.auth?.user);
-  const [removeFromCart, { isLoading: isCartLoading }] =
-    useUpdateUserMutation();
+  const [
+    removeFromCart,
+    { isLoading: isCartLoading, isSuccess: isCartSuccess },
+  ] = useUpdateUserMutation();
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isCartSuccess) {
+      toast.success("Product removed from cart!");
+      setTimeout(() => {
+        // window.location.reload();
+        navigate(0);
+      }, 1000);
+    }
+  }, [isCartSuccess, navigate]);
 
   // find subtotal from cart
-
   let subtotal = 0;
   cart?.forEach((item) => {
     subtotal += item?.product?.price * item?.quantity;
@@ -183,6 +196,7 @@ const ProductCart = () => {
                       <button
                         class="nc-Button relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm sm:text-base font-medium py-3 px-4 sm:py-3.5 sm:px-6 disabled:bg-opacity-90 bg-slate-900 hover:bg-slate-800 text-slate-50 shadow-xl flex-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-6000"
                         onClick={() => setIsOpen(true)}
+                        disabled={!cart?.length}
                       >
                         Check out
                       </button>
