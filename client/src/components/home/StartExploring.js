@@ -5,17 +5,48 @@ import { useDisplayCategoriesQuery } from "../../features/category/categoryApi";
 import DashboardLoading from "../loading/DashboardLoading";
 import CategoryCards from "./CategoryCards";
 import StoreCards from "./StoreCards";
+import { useDisplayBrandsQuery } from "../../features/brand/brandApi";
+import BrandCards from "./BrandCards";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const StartExploring = () => {
-  const [explore, setExplore] = useState("Category");
+  const [explore, setExplore] = useState("Brand");
   const [categoryLimit, setCategoryLimit] = useState(3);
   const [storeLimit, setStoreLimit] = useState(3);
+  const [brandLimit, setBrandLimit] = useState(3);
 
   const tabHeaders = [
+    {
+      name: "Brand",
+      icon: (
+        <svg
+          class=" w-4 h-4 sm:w-5 sm:h-5"
+          viewBox="0 0 22 22"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10.7998 3.40005L7.19982 7.70005C7.09982 7.90005 6.99982 8.20005 6.89982 8.40005L5.19982 17C5.09982 17.6 5.39982 18.3 5.89982 18.6L11.1998 21.6C11.5998 21.8 12.2998 21.8 12.6998 21.6L17.9998 18.6C18.4998 18.3 18.7998 17.6 18.6998 17L16.9998 8.40005C16.9998 8.20005 16.7998 7.90005 16.6998 7.70005L13.0998 3.40005C12.4998 2.60005 11.4998 2.60005 10.7998 3.40005Z"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+          <path
+            d="M16.8002 8.5L12.5002 20.7C12.3002 21.1 11.7002 21.1 11.6002 20.7L7.2002 8.5"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
+      ),
+    },
     {
       name: "Category",
       icon: (
@@ -48,13 +79,16 @@ const StartExploring = () => {
     },
   ];
 
-  const { data: storesData, isLoading: isStoresLoading } =
-    useDisplayStoresQuery({ page: 1, limit: 3 });
+  const { data: brandsData, isLoading: isBrandsLoading } =
+    useDisplayBrandsQuery({ page: 1, limit: brandLimit });
   const { data: categoriesData, isLoading: isCategoriesLoading } =
     useDisplayCategoriesQuery({ page: 1, limit: categoryLimit });
+  const { data: storesData, isLoading: isStoresLoading } =
+    useDisplayStoresQuery({ page: 1, limit: 3 });
 
-  const stores = storesData?.data || [];
+  const brands = brandsData?.data || [];
   const categories = categoriesData?.data || [];
+  const stores = storesData?.data || [];
 
   return (
     <>
@@ -102,7 +136,9 @@ const StartExploring = () => {
                   </ul>
                 </Tab.List>
                 <Tab.Panels className="grid gap-4 md:gap-7 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-                  {(isCategoriesLoading || isStoresLoading) && (
+                  {(isCategoriesLoading ||
+                    isStoresLoading ||
+                    isBrandsLoading) && (
                     <div className="xl:col-span-3 md:col-span-2 col-span-1 w-full h-full">
                       <DashboardLoading />
                     </div>
@@ -114,9 +150,13 @@ const StartExploring = () => {
                   {!isCategoriesLoading && explore === "Category" && (
                     <CategoryCards categories={categories} />
                   )}
+                  {!isBrandsLoading && explore === "Brand" && (
+                    <BrandCards brands={brands} />
+                  )}
                 </Tab.Panels>
                 {(explore === "Store" && !stores?.length) ||
-                (explore === "Category" && !categories?.length) ? (
+                (explore === "Category" && !categories?.length) ||
+                (explore === "Brand" && !brands?.length) ? (
                   <div
                     className="flex p-4 my-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50 justify-center"
                     role="alert"
@@ -149,8 +189,11 @@ const StartExploring = () => {
                           !isCategoriesLoading &&
                           setCategoryLimit(categoryLimit + 3)) ||
                           (explore === "Store" &&
-                            isStoresLoading &&
-                            setStoreLimit(storeLimit + 3));
+                            !isStoresLoading &&
+                            setStoreLimit(storeLimit + 3)) ||
+                          (explore === "Brand" &&
+                            !isBrandsLoading &&
+                            setBrandLimit(brandLimit + 3));
                       }}
                     >
                       <svg

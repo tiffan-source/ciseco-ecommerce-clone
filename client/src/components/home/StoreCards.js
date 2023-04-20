@@ -46,7 +46,7 @@ const StoreCards = ({ stores }) => {
                 </span>
               </div>
               <div className="">
-                <span className="block mb-2 text-sm text-slate-500">{_id}</span>
+                <span className="block mb-2 text-sm text-slate-500 uppercase">{_id}</span>
                 <h2 className="text-2xl sm:text-3xl font-semibold">{title}</h2>
               </div>
               <Link

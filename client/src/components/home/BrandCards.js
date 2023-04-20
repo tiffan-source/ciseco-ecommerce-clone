@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import LazyLoadingImage from "../LazyLoadingImage";
 
-const CategoryCards = ({ categories }) => {
+const BrandCards = ({ brands }) => {
   const bottomBanner = [
     "https://chisnghiax.com/ciseco/static/media/explore6.d820796c6233d6fd068004c49905dda6.svg",
     "https://chisnghiax.com/ciseco/static/media/explore5.31cdd38104cf6ff9b87f13d23831c063.svg",
@@ -14,7 +14,7 @@ const CategoryCards = ({ categories }) => {
 
   return (
     <>
-      {categories?.map(({ _id, title, thumbnail, subcategories }) => (
+      {brands?.map(({ _id, title, logo, products }) => (
         <div
           key={_id}
           className="nc-CardCategory4 relative w-full aspect-w-12 aspect-h-11 h-0 rounded-3xl overflow-hidden bg-white group hover:nc-shadow-lg transition-shadow"
@@ -36,22 +36,24 @@ const CategoryCards = ({ categories }) => {
                   <LazyLoadingImage
                     height={"80"}
                     width={"80"}
-                    src={thumbnail?.url}
-                    alt={thumbnail?.public_id}
-                    className={"object-cover w-20 h-20"}
+                    src={logo?.url}
+                    alt={logo?.public_id}
+                    className={"!object-contain w-20 h-20"}
                   />
                 </div>
                 <span className="text-xs text-slate-700 font-medium">
-                  {subcategories?.length} subcategories
+                  {products?.length} products
                 </span>
               </div>
               <div className="">
-                <span className="block mb-2 text-sm text-slate-500 uppercase">{_id}</span>
+                <span className="block mb-2 text-sm text-slate-500 uppercase">
+                  {_id}
+                </span>
                 <h2 className="text-2xl sm:text-3xl font-semibold">{title}</h2>
               </div>
               <Link
                 className="flex items-center text-sm font-medium group-hover:text-primary-500 transition-colors"
-                to={`/category/${title}/${_id}`}
+                to={`/brand/${title}/${_id}`}
               >
                 <span>See Collection</span>
                 <svg
@@ -73,7 +75,7 @@ const CategoryCards = ({ categories }) => {
             </div>
           </div>
           <Link
-            to={`/category/${title.toLowerCase()}/${_id}`}
+            to={`/brand/${title.toLowerCase()}/${_id}`}
             className="absolute inset-0"
           ></Link>
         </div>
@@ -82,4 +84,4 @@ const CategoryCards = ({ categories }) => {
   );
 };
 
-export default CategoryCards;
+export default BrandCards;
