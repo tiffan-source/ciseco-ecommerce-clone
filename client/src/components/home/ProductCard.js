@@ -3,8 +3,16 @@ import { Link } from "react-router-dom";
 import LazyLoadingImage from "../LazyLoadingImage";
 
 const ProductCard = ({ product }) => {
-  const { _id, title, tags, thumbnail, subcategory, brand, price } =
-    product || {};
+  const {
+    _id,
+    title,
+    tags,
+    thumbnail,
+    description,
+    subcategory,
+    brand,
+    price,
+  } = product || {};
   return (
     <>
       <div
@@ -62,6 +70,9 @@ const ProductCard = ({ product }) => {
               <title>{title}</title>
               {title}
             </h2>
+            <p className="text-sm font-normal text-slate-500 mt-1 line-clamp-2">
+              {description}
+            </p>
           </div>
           <div className="flex justify-between items-end">
             <div className="">
