@@ -4,9 +4,12 @@ import { useSelector } from "react-redux";
 import LazyLoadingImage from "../LazyLoadingImage";
 import { Link } from "react-router-dom";
 import CheckoutModal from "./CheckoutModal";
+import { useUpdateUserMutation } from "../../features/auth/authApi";
 
 const ProductCart = () => {
-  const { cart } = useSelector((state) => state?.auth?.user);
+  const { cart, _id } = useSelector((state) => state?.auth?.user);
+  const [removeFromCart, { isLoading: isCartLoading }] =
+    useUpdateUserMutation();
   const [isOpen, setIsOpen] = useState(false);
 
   // find subtotal from cart
@@ -123,8 +126,16 @@ const ProductCart = () => {
                                   <button
                                     type="button"
                                     class="font-medium text-red-600"
+                                    onClick={() =>
+                                      removeFromCart({
+                                        uid: _id,
+                                        userData: {
+                                          discard: { _id: crt?._id },
+                                        },
+                                      })
+                                    }
                                   >
-                                    Remove
+                                    {isCartLoading ? "Removing..." : "Remove"}
                                   </button>
                                 </div>
                               </div>

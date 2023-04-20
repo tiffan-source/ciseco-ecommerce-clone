@@ -122,6 +122,19 @@ exports.updateUser = async (id, data) => {
     );
   }
 
+  if (Object.keys(data).includes("discard")) {
+    return await User.findByIdAndUpdate(
+      id,
+      {
+        $pull: { cart: data.discard },
+      }, // receive data as: {"cart": "AN_OBJECT_ID"}
+      {
+        runValidators: true,
+        returnOriginal: false,
+      }
+    );
+  }
+
   // { status: "inactive" } for permanent disable account
   return await User.findByIdAndUpdate(id, data, {
     runValidators: true,
