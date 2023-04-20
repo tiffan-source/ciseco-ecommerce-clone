@@ -33,7 +33,7 @@ const Searchbar = () => {
         <h1 className="md:text-7xl text-3xl font-bold leading-[115%] lg:text-black text-white lg:drop-shadow-none md:drop-shadow-2xl lg:text-left text-center">
           Start your search <br /> by typing
         </h1>
-        <div className="relative z-50">
+        <div className="relative z-20">
           <form
             className="bg-white md:rounded-2xl rounded md:p-3 p-2 flex items-center lg:max-w-xl w-4/5 lg:mx-0 mx-auto overflow-hidden shadow-lg"
             onSubmit={handleInputSearch}
