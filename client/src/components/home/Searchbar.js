@@ -48,7 +48,7 @@ const Searchbar = () => {
               value={input}
               onChange={(e) => handleSearchKeyword(e.target.value)}
             />
-            <button className="p-2 md:rounded-2xl rounded bg-[#fea285] hover:bg-[#dd89e3] hover:transition-all hover:duration-300 md:h-14 md:w-14 h-9 w-9 grid md:place-items-center content-center justify-center">
+            <button className="p-2 md:rounded-xl rounded bg-[#fea285] hover:bg-[#dd89e3] hover:transition-all hover:duration-300 md:h-14 md:w-14 h-9 w-9 grid md:place-items-center content-center justify-center">
               {isProductsLoading ? (
                 <svg
                   class="animate-spin text-white md:h-8 md:w-8 h-6 w-6"
