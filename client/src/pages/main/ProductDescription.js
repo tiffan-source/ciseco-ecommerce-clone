@@ -151,7 +151,7 @@ const ProductDescription = () => {
               </div>
 
               {/* product meta tags */}
-              <div className="flex flex-wrap">
+              <div className="flex flex-wrap gap-y-2">
                 {tags?.map((tag, index) => (
                   <span
                     key={index}
