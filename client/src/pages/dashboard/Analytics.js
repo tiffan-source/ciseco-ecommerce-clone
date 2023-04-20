@@ -83,9 +83,9 @@ const Analytics = () => {
           {analytics.map(({ name, icon, count }, index) => (
             <div
               key={index}
-              class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow relative flex flex-col gap-y-4"
+              className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow relative flex flex-col gap-y-4"
             >
-              <div class="absolute inline-flex items-center justify-center px-2 py-1 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2">
+              <div className="absolute inline-flex items-center justify-center px-2 py-1 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2">
                 {count}
               </div>
               <LazyLoadingImage
@@ -95,19 +95,19 @@ const Analytics = () => {
                 height={"40"}
                 className={"w-10 h-10 object-contain"}
               />
-              <h5 class="text-2xl font-semibold tracking-tight text-gray-900">
+              <h5 className="text-2xl font-semibold tracking-tight text-gray-900">
                 {name}
               </h5>
 
-              <div class="flex items-center text-slate-500">
-                <span class="text-sm ">
+              <div className="flex items-center text-slate-500">
+                <span className="text-sm ">
                   <Link
                     className="flex gap-x-2 line-clamp-1"
                     to={`/dashboard/add-new-${name.toLowerCase()}`}
                   >
                     Add
                     <svg
-                      class="w-5 h-5"
+                      className="w-5 h-5"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -117,15 +117,15 @@ const Analytics = () => {
                     </svg>
                   </Link>
                 </span>
-                <span class="h-5 mx-1 sm:mx-2 border-l border-slate-200"></span>
-                <span class="text-sm ml-1 ">
+                <span className="h-5 mx-1 sm:mx-2 border-l border-slate-200"></span>
+                <span className="text-sm ml-1 ">
                   <Link
                     className="flex gap-x-2 whitespace-nowrap text-ellipsis overflow-hidden"
                     to={`/dashboard/list-${name.toLowerCase()}`}
                   >
                     View
                     <svg
-                      class="w-5 h-5"
+                      className="w-5 h-5"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
