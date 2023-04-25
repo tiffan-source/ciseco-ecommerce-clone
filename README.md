@@ -37,8 +37,8 @@ An eco shop & ecommerce responsive React template built by React.JS & Tailwind C
 
 ## Important Links
 
-- [x] Client Side Live Link: [Click Here](https://9t5-ciseco-ecommerce-client.vercel.app)
-- [x] Server Side Live Link: [Click Here](https://ninet5-ciseco-ecommerce-server.onrender.com) `troubled`
+- [x] Client Side Live Link: [Click Here](https://9t5-ciseco-ecommerce-client.vercel.app) `deprecated`
+- [x] Server Side Live Link: [Click Here](https://ninet5-ciseco-ecommerce-server.onrender.com) `deprecated`
 - [x] Dashboard Reference Link: [Click Here](https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/index.html)
 - [x] Reference Site Live Link: [Click Here](https://chisnghiax.com/ciseco/)
 - [x] API Reference `Postman` Link: [Click Here](https://api.postman.com/collections/24099405-e6bf9cce-a731-43ed-9059-a80236dc876a?access_key=PMAT-01GV82439T78SH5D4HY22WXHZ3)
