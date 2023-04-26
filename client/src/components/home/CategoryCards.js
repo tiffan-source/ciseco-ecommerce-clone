@@ -46,7 +46,9 @@ const CategoryCards = ({ categories }) => {
                 </span>
               </div>
               <div className="">
-                <span className="block mb-2 text-sm text-slate-500 uppercase">{_id}</span>
+                <span className="block mb-2 text-sm text-slate-500 uppercase">
+                  {_id}
+                </span>
                 <h2 className="text-2xl sm:text-3xl font-semibold">{title}</h2>
               </div>
               <Link
@@ -73,7 +75,7 @@ const CategoryCards = ({ categories }) => {
             </div>
           </div>
           <Link
-            to={`/category/${title.toLowerCase()}/${_id}`}
+            to={`/category/${title?.toLowerCase()}/${_id}`}
             className="absolute inset-0"
           ></Link>
         </div>

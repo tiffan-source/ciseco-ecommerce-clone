@@ -75,7 +75,7 @@ const BrandCards = ({ brands }) => {
             </div>
           </div>
           <Link
-            to={`/brand/${title.toLowerCase()}/${_id}`}
+            to={`/brand/${title?.toLowerCase()}/${_id}`}
             className="absolute inset-0"
           ></Link>
         </div>

@@ -126,7 +126,7 @@ const ExpertChoice = ({ products, loading, type }) => {
                       <Link
                         className="absolute inset-0"
                         to={`/product/${title
-                          .toLowerCase()
+                          ?.toLowerCase()
                           .replace(/\s/g, "-")}/${_id}`}
                       ></Link>
                     </div>

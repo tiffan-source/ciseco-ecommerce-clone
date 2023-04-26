@@ -115,7 +115,7 @@ const ProductCart = () => {
                                       <Link
                                         className="text-base font-medium line-clamp-2"
                                         to={`/product/${crt?.product?.title
-                                          .toLowerCase()
+                                          ?.toLowerCase()
                                           .replace(/\s/g, "-")}/${
                                           crt?.product?._id
                                         }`}

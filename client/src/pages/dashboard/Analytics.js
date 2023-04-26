@@ -103,7 +103,7 @@ const Analytics = () => {
                 <span className="text-sm ">
                   <Link
                     className="flex gap-x-2 line-clamp-1"
-                    to={`/dashboard/add-new-${name.toLowerCase()}`}
+                    to={`/dashboard/add-new-${name?.toLowerCase()}`}
                   >
                     Add
                     <svg
@@ -121,7 +121,7 @@ const Analytics = () => {
                 <span className="text-sm ml-1 ">
                   <Link
                     className="flex gap-x-2 whitespace-nowrap text-ellipsis overflow-hidden"
-                    to={`/dashboard/list-${name.toLowerCase()}`}
+                    to={`/dashboard/list-${name?.toLowerCase()}`}
                   >
                     View
                     <svg

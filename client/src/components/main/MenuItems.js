@@ -219,7 +219,7 @@ const MenuItems = () => {
                       ? "bg-gray-100/10 text-slate-900/50 shadow-sm"
                       : "text-gray-900"
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                  to={`/category/${title.toLowerCase()}/${_id}`}
+                  to={`/category/${title?.toLowerCase()}/${_id}`}
                 >
                   <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 bg-[#eff9ff] text-[#00a8e7] rounded-md sm:h-12 sm:w-12 object-cover">
                     <LazyLoadingImage

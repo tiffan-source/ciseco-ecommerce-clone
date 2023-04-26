@@ -15,7 +15,7 @@ const Searchbar = () => {
 
   const handleSearchKeyword = (searchWord) => {
     const filteredProducts = products.filter((product) =>
-      product.title.toLowerCase().includes(searchWord.toLowerCase())
+      product.title?.toLowerCase().includes(searchWord?.toLowerCase())
     );
     setInput(searchWord);
     setSearchedProducts(filteredProducts);

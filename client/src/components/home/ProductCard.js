@@ -22,12 +22,12 @@ const ProductCard = ({ product }) => {
       >
         <Link
           className="absolute inset-0"
-          to={`/product/${title.toLowerCase().replace(/\s/g, "-")}/${_id}`}
+          to={`/product/${title?.toLowerCase().replace(/\s/g, "-")}/${_id}`}
         ></Link>
         <div className="relative flex-shrink-0 bg-slate-50 rounded-3xl overflow-hidden z-1 group">
           <Link
             className="block"
-            to={`/product/${title.toLowerCase().replace(/\s/g, "-")}/${_id}`}
+            to={`/product/${title?.toLowerCase().replace(/\s/g, "-")}/${_id}`}
           >
             <div
               className="nc-NcImage flex aspect-w-11 aspect-h-12 w-full h-0"

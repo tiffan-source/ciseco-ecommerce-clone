@@ -102,7 +102,7 @@ const brandSchema = new mongoose.Schema(
 /* middleware for brand */
 brandSchema.pre("save", function (next) {
   // Capitalize tagline
-  let splitStr = this.tagline.toLowerCase().split(" ");
+  let splitStr = this.tagline?.toLowerCase().split(" ");
   for (let i = 0; i < splitStr.length; i++) {
     splitStr[i] =
       splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);

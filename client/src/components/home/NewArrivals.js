@@ -59,14 +59,14 @@ const NewArrivals = ({ products, loading, type }) => {
                       <Link
                         className="absolute inset-0"
                         to={`/product/${title
-                          .toLowerCase()
+                          ?.toLowerCase()
                           .replace(/\s/g, "-")}/${_id}`}
                       ></Link>
                       <div className="relative flex-shrink-0 bg-slate-50 rounded-3xl overflow-hidden z-1 group">
                         <Link
                           className="block"
                           to={`/product/${title
-                            .toLowerCase()
+                            ?.toLowerCase()
                             .replace(/\s/g, "-")}/${_id}`}
                         >
                           <div
