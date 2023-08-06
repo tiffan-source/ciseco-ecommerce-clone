@@ -241,12 +241,12 @@ const Signup = () => {
                       {...register("avatar", { required: true })}
                       className="w-full form-input rounded-md"
                       onChange={(event) => {
-                        const formData = new FormData();
-                        formData.append("avatar", event.target.files[0]);
-                        uploadUserAvatar({
-                          route: "user/avatar",
-                          photo: formData,
-                        });
+                        // const formData = new FormData();
+                        // formData.append("avatar", event.target.files[0]);
+                        // uploadUserAvatar({
+                        //   route: "user/avatar",
+                        //   photo: formData,
+                        // });              
                       }}
                     />
                   )}
