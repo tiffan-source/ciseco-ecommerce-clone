@@ -45,7 +45,8 @@ const mainRoutes = {
       path: "/forgot-password",
       element: (
         <SplitRouter>
-          <ForgotPassword />
+          {/* <ForgotPassword /> */}
+          <ComingSoon />
         </SplitRouter>
       ),
     },
