@@ -324,14 +324,14 @@ const Signup = () => {
                 </label>
                 <div className="mt-1 flex">
                   <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md">
-                    +880
+                    +229
                   </span>
                   <input
                     id="phone"
                     name="phone"
                     type="tel"
                     autoComplete="off"
-                    placeholder="i.e.: +8801xxxxxxxxx"
+                    placeholder="i.e.: +229xxxxxxxx"
                     maxLength="10"
                     {...register("phone", { required: true })}
                     className={`w-full form-input rounded-r-md ${
