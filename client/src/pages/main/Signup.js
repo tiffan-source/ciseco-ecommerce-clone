@@ -47,6 +47,7 @@ const Signup = () => {
       toast.success("Signed up.", {
         id: "signup_user",
       });
+      navigate("/sign-in");
     } else if (uploading) {
       toast.loading("Uploading avatar", {
         id: "user_avatar",
@@ -60,7 +61,7 @@ const Signup = () => {
 
   // submit signup form
   const handleSignupForm = (data) => {
-    data["phone"] = "+880" + data["phone"];
+    data["phone"] = "+229" + data["phone"];
     data["avatar"] = { url: photo.url, public_id: photo.public_id };
 
     signup(data);
